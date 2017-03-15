@@ -70,6 +70,12 @@ devMiddleware.waitUntilValid(function () {
   console.log('> Listening at ' + uri + '\n')
 })
 
+app.get('/articles', function (req, res) {
+  setTimeout(() => {
+    res.send({articles: [{content: '~~划掉划掉~~', id:'1'}]})
+  }, 2000)
+})
+
 module.exports = app.listen(port, function (err) {
   if (err) {
     console.log(err)
