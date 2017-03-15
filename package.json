@@ -5,6 +5,7 @@
   "author": "DingDean <dingkework@hotmail.com>",
   "private": true,
   "scripts": {
+    "prod": "node server/server.js",
     "dev": "node build/dev-server.js",
     "build": "node build/build.js",
     "unit": "cross-env BABEL_ENV=test karma start test/unit/karma.conf.js --single-run",
