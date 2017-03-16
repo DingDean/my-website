@@ -13,6 +13,7 @@ var proxyMiddleware = require('http-proxy-middleware')
 var webpackConfig = process.env.NODE_ENV === 'testing'
   ? require('./webpack.prod.conf')
   : require('./webpack.dev.conf')
+var fs = require('fs')
 
 // default port where dev server listens for incoming traffic
 var port = process.env.PORT || config.dev.port
@@ -68,6 +69,12 @@ var uri = 'http://localhost:' + port
 
 devMiddleware.waitUntilValid(function () {
   console.log('> Listening at ' + uri + '\n')
+})
+
+app.get('/articles', function (req, res) {
+  fs.readFile('./README.md', 'utf8', (err, data) => {
+    res.send({articles: [{content: data, id:'1'}]})
+  })
 })
 
 module.exports = app.listen(port, function (err) {
