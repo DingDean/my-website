@@ -1,6 +1,5 @@
 <template>
   <div class="articles-container">
-    <h1>下面会有文章</h1>
     <section v-if="loading">
       <h1>不好意思，现在还没有一篇文章呢！以后这里可以当作一个彩蛋</h1>
     </section>
@@ -51,5 +50,4 @@ export default {
 </script>
 
 <style scoped>
-.articles-container {text-align: center}
 </style>
