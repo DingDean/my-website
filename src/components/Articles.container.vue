@@ -3,17 +3,21 @@
     <section v-if="loading">
       <h1>不好意思，现在还没有一篇文章呢！以后这里可以当作一个彩蛋</h1>
     </section>
-    <section v-if="articles">
-      <my-article v-for="article in articles" :key="article.id" :mdHtml="article.content | md2Html"></my-article>
-    </section>
-    <section v-if="error">
-      <h1>服务器故障！</h1>
+    <section v-if="articles_list">
+      <my-article-preview
+        v-for="ele in articles_list"
+        :title="ele.title"
+        :content="ele.content"
+        :articleId="ele.id"
+        :key="ele.id"
+      ></my-article-preview>
     </section>
   </div>
 </template>
 
 <script>
 import MyArticle from './Articles.vue'
+import MyArticlePreview from './Articles.preview.vue'
 import marked from 'marked'
 
 export default {
@@ -21,7 +25,7 @@ export default {
   data () {
     return {
       loading: true,
-      articles: null,
+      articles_list: null,
       error: null
     }
   },
@@ -29,7 +33,8 @@ export default {
     this.fetchData()
   },
   components: {
-    MyArticle
+    MyArticle,
+    MyArticlePreview
   },
   filters: {
     md2Html (md) {
@@ -40,7 +45,11 @@ export default {
     fetchData () {
       this.$http.get('/articles').then(function (response) {
         this.loading = false
-        this.articles = response.body.articles
+        this.articles_list = [
+          {title: '标题一', content: '预览内容一', id: 'article_1'},
+          {title: '标题二', content: '预览内容二', id: '2'},
+          {title: '标题三', content: '预览内容三', id: '3'}
+        ]
       }, function (response) {
         console.log('wrong')
       })
