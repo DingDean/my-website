@@ -17,7 +17,7 @@ export default new Router({
       component: MyArticles
     },
     {
-      path: '/articles/:article-id',
+      path: '/articles/:articleId',
       component: MyArticle,
       props: true
     }

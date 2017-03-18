@@ -16,9 +16,7 @@
 </template>
 
 <script>
-import MyArticle from './Articles.vue'
 import MyArticlePreview from './Articles.preview.vue'
-import marked from 'marked'
 
 export default {
   name: 'article',
@@ -33,23 +31,13 @@ export default {
     this.fetchData()
   },
   components: {
-    MyArticle,
     MyArticlePreview
-  },
-  filters: {
-    md2Html (md) {
-      return marked(md, {sanitize: true})
-    }
   },
   methods: {
     fetchData () {
       this.$http.get('/articles').then(function (response) {
         this.loading = false
-        this.articles_list = [
-          {title: '标题一', content: '预览内容一', id: 'article_1'},
-          {title: '标题二', content: '预览内容二', id: '2'},
-          {title: '标题三', content: '预览内容三', id: '3'}
-        ]
+        this.articles_list = response.body.articles
       }, function (response) {
         console.log('wrong')
       })
