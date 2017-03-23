@@ -2,6 +2,7 @@ const express = require('express')
 const app = express()
 const path = require('path')
 const fs = require('fs')
+const varDef = require('./configs/server.variables.js')
 
 var md;
 fs.readFile('./README.md', 'utf8', function (err, data) {
