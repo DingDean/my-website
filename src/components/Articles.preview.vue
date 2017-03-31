@@ -1,0 +1,43 @@
+<template>
+  <div @click="jump" class="article-preview-tab">
+    <h1>{{title}}</h1>
+    <p>{{content}}</p>
+  </div>
+</template>
+
+
+<script>
+export default {
+  data () {
+    return {
+    }
+  },
+  props: ['title', 'content', 'articleId'],
+  methods: {
+    jump () {
+      this.$router.push(`/articles/${this.articleId}`)
+    }
+  }
+
+}
+</script>
+
+<style scoped>
+.article-preview-tab {
+  border-radius: 2px;
+  color: #444;
+  background: #fff;
+  font-family: 'Open Sans', Helvetica, sans-serif;
+  font-weight: 300;
+  margin: 1rem auto 1rem;
+  max-width: 48rem;
+  max-height:14rem;
+  text-align: left;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+}
+.article-preview-tab:hover {
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+</style>

@@ -73,9 +73,22 @@ devMiddleware.waitUntilValid(function () {
 
 app.get('/articles', function (req, res) {
   fs.readFile('./README.md', 'utf8', (err, data) => {
-    res.send({articles: [{content: data, id:'1'}]})
+    res.send({articles: [
+          {title: '标题一', content: '预览内容一', id: 'article_1'},
+          {title: '标题二', content: '预览内容二', id: '2'},
+          {title: '标题三', content: '预览内容三', id: '3'}
+    ]})
   })
 })
+
+app.get('/article/:id', function (req, res) {
+  fs.readFile('./README.md', 'utf8', (err, data) => {
+    res.send({content: data})
+  })
+})
+
+
+app.get('/article')
 
 module.exports = app.listen(port, function (err) {
   if (err) {
