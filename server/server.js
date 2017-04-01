@@ -3,6 +3,7 @@ const app = express()
 const path = require('path')
 const fs = require('fs')
 const varDef = require('./configs/server.variables.js')
+const router = require('./routes/articles.route.js')
 
 var md;
 fs.readFile('./README.md', 'utf8', function (err, data) {
@@ -15,11 +16,7 @@ app.get('/', function (req, res) {
   res.sendFile(path.resolve(__dirname, '../dist/index.html'))
 });
 
-app.get('/articles', function (req, res) {
-  setTimeout(() => {
-    res.send({articles: [{content: md, id:'1'}]})
-  }, 2000)
-})
+app.use('/', router)
 
 app.listen(3000, function () {
   console.log('server is ready')

@@ -15,6 +15,8 @@ var webpackConfig = process.env.NODE_ENV === 'testing'
   : require('./webpack.dev.conf')
 var fs = require('fs')
 
+const routers = require('../server/routes/articles.route.js');
+
 // default port where dev server listens for incoming traffic
 var port = process.env.PORT || config.dev.port
 // automatically open browser, if not set will be false
@@ -71,24 +73,7 @@ devMiddleware.waitUntilValid(function () {
   console.log('> Listening at ' + uri + '\n')
 })
 
-app.get('/articles', function (req, res) {
-  fs.readFile('./README.md', 'utf8', (err, data) => {
-    res.send({articles: [
-          {title: '标题一', content: '预览内容一', id: 'article_1'},
-          {title: '标题二', content: '预览内容二', id: '2'},
-          {title: '标题三', content: '预览内容三', id: '3'}
-    ]})
-  })
-})
-
-app.get('/article/:id', function (req, res) {
-  fs.readFile('./README.md', 'utf8', (err, data) => {
-    res.send({content: data})
-  })
-})
-
-
-app.get('/article')
+app.use('/', routers);
 
 module.exports = app.listen(port, function (err) {
   if (err) {

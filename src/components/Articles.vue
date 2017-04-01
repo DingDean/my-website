@@ -24,7 +24,7 @@ export default {
   },
   methods: {
     fetchData () {
-      this.$http.get(`/article/${this.articleId}`).then(res => {
+      this.$http.get(`/articles/${this.articleId}`).then(res => {
         this.loading = false
         this.md = res.body.content
       })
