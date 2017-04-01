@@ -38,12 +38,13 @@ export default {
   },
   methods: {
     fetchData () {
-      this.$http.get('/articles-list').then(function (response) {
+      this.$http.get('/articles').then(function (response) {
         this.loading = false
         this.articles_list = response.body.articles
       }, function (response) {
         this.loading = false
         this.error = true
+        console.log(response)
       })
     }
   }

@@ -15,7 +15,7 @@ var webpackConfig = process.env.NODE_ENV === 'testing'
   : require('./webpack.dev.conf')
 var fs = require('fs')
 
-const routers = require('../server/routes/articles.route.js');
+const routes = require('../server/routes/routes.config.js');
 
 // default port where dev server listens for incoming traffic
 var port = process.env.PORT || config.dev.port
@@ -73,7 +73,7 @@ devMiddleware.waitUntilValid(function () {
   console.log('> Listening at ' + uri + '\n')
 })
 
-app.use('/', routers);
+routes.forEach(route => app.use(route.path, require(route.module)))
 
 module.exports = app.listen(port, function (err) {
   if (err) {
