@@ -12,6 +12,9 @@
         :key="ele.id"
       ></my-article-preview>
     </section>
+    <section v-if="error">
+      <h1>服务器内部错误！以后这里可以有个好玩的东西！</h1>
+    </section>
   </div>
 </template>
 
@@ -39,7 +42,8 @@ export default {
         this.loading = false
         this.articles_list = response.body.articles
       }, function (response) {
-        console.log('wrong')
+        this.loading = false
+        this.error = true
       })
     }
   }
