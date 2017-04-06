@@ -7,6 +7,7 @@ const fetchArticles = require(path.resolve(__dirname, '../utils/fetchPreviewList
 
 var cache_fr = null
 var cache_sv = {}
+var articles = {}
 
 fetch((err, articles) => {
   if (err)
@@ -29,11 +30,14 @@ router.get('/:id', (req, res) => {
   if (!cache_sv)
     return res.status(500).end()
   let id = req.params.id
+  if (articles[id])
+    return res.send(articles[id])
   let filePath = path.resolve(process.env.ATCINDEX, `${cache_sv[id]}.md`)
   fs.readFile(filePath, 'utf8', (err, data) => {
     if (err)
       return res.status(404).end()
     res.send({content: data})
+    articles[id] = data
   })
 })
 
