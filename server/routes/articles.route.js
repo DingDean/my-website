@@ -5,36 +5,37 @@ const fs = require('fs');
 const path = require('path')
 const fetchArticles = require(path.resolve(__dirname, '../utils/fetchPreviewList.js'))
 
-var cache_fr = null
-var cache_sv = {}
+var _preview_list = null
+var _idToTitle = {}
 var articles = {}
 
 fetch((err, articles_list) => {
   if (err)
     return console.log(err)
-  cache_fr = articles_list
-  cache_sv = idToTitle(articles_list)
+  _preview_list = articles_list
+  _idToTitle = idToTitle(articles_list)
 })
 
 router.get('/', (req, res) => {
-  if (cache_fr)
-    return res.send(cache_fr)
+  if (_preview_list)
+    return res.send(_preview_list)
   fetch((err, articles) => {
     if (err)
       return res.status(500).end(err)
+    _preview_list = articles
     res.send(articles)
   })
 })
 
 router.get('/:id', (req, res) => {
-  if (!cache_sv)
+  if (!_idToTitle)
     return res.status(500).end()
 
   let id = req.params.id
   if (articles[id])
     return res.send({content :articles[id]})
 
-  let filePath = path.resolve(process.env.ATCINDEX, `${cache_sv[id]}.md`)
+  let filePath = path.resolve(process.env.ATCINDEX, `${_idToTitle[id]}.md`)
   fs.readFile(filePath, 'utf8', (err, data) => {
     if (err)
       return res.status(404).end()
