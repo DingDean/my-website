@@ -18,14 +18,14 @@ function fetchList () {
         let ct = buffer[i]
         if (/^#/.test(ct))
         {
-          let name = ct.split('').filter(ele => ele != '#' && ele != ' ').join('')
-          list[name] = []
-          pointer = name
+          let section = ct.split('').filter(ele => ele != '#' && ele != ' ').join('')
+          list[section] = []
+          pointer = section
         }
         if (/\d/.test(ct))
         {
-          let name = ct.split('').filter(ele => ele != ' ').join('')
-          list[pointer].push(name)
+          let article = self.extractArticleInfo(ct)
+          list[pointer].push(article)
         }
       }
       previewList = list

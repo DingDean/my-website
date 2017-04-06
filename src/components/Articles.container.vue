@@ -7,7 +7,7 @@
       <my-article-preview
         v-for="ele in articles_list"
         :title="ele.title"
-        :content="ele.content"
+        :content="ele.summary"
         :articleId="ele.id"
         :key="ele.id"
       ></my-article-preview>
