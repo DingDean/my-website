@@ -9,11 +9,11 @@ var cache_fr = null
 var cache_sv = {}
 var articles = {}
 
-fetch((err, articles) => {
+fetch((err, articles_list) => {
   if (err)
     return console.log(err)
-  cache_fr = articles
-  cache_sv = idToTitle(articles)
+  cache_fr = articles_list
+  cache_sv = idToTitle(articles_list)
 })
 
 router.get('/', (req, res) => {
@@ -29,15 +29,17 @@ router.get('/', (req, res) => {
 router.get('/:id', (req, res) => {
   if (!cache_sv)
     return res.status(500).end()
+
   let id = req.params.id
   if (articles[id])
-    return res.send(articles[id])
+    return res.send({content :articles[id]})
+
   let filePath = path.resolve(process.env.ATCINDEX, `${cache_sv[id]}.md`)
   fs.readFile(filePath, 'utf8', (err, data) => {
     if (err)
       return res.status(404).end()
-    res.send({content: data})
     articles[id] = data
+    res.send({content: data})
   })
 })
 
