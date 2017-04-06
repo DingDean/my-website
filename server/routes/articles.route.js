@@ -5,12 +5,20 @@ const fs = require('fs');
 const path = require('path')
 const fetchArticles = require(path.resolve(__dirname, '../utils/fetchPreviewList.js'))
 
-var cache = null
+var cache_fr = null
+var cache_sv = {}
+
+fetch((err, articles) => {
+  if (err)
+    return console.log(err)
+  cache_fr = articles
+  cache_sv = idToTitle(articles)
+})
 
 router.get('/', (req, res) => {
-  if (cache)
-    return res.send(cache)
-  fetchArticles.scan(path.resolve(process.env.ATCINDEX, './index.md'), (err, articles) => {
+  if (cache_fr)
+    return res.send(cache_fr)
+  fetch((err, articles) => {
     if (err)
       return res.status(500).end(err)
     res.send(articles)
@@ -18,13 +26,32 @@ router.get('/', (req, res) => {
 })
 
 router.get('/:id', (req, res) => {
-  fs.readFile(path.resolve(__dirname,'../README.md'), 'utf8', (err, data) => {
+  if (!cache_sv)
+    return res.status(500).end()
+  let id = req.params.id
+  let filePath = path.resolve(process.env.ATCINDEX, `${cache_sv[id]}.md`)
+  fs.readFile(filePath, 'utf8', (err, data) => {
     if (err)
-    {
-      console.log(err)
-    }
+      return res.status(404).end()
     res.send({content: data})
   })
 })
+
+function fetch (callback)
+{
+  fetchArticles.scan(path.resolve(process.env.ATCINDEX, './index.md'), callback)
+}
+
+function idToTitle (list)
+{
+  let idTitle = {}
+  Object.getOwnPropertyNames(list).forEach(section => {
+    let articles = list[section]
+    articles.forEach(article => {
+      idTitle[article.id] = article.title
+    })
+  })
+  return idTitle
+}
 
 module.exports = router

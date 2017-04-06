@@ -46,12 +46,9 @@ export default {
         let list = response.body
         this.sections_list = Object.getOwnPropertyNames(list)
         this.articles_list = list
-        console.log(this.sections_list)
-        console.log(this.articles_list)
       }, function (response) {
         this.loading = false
         this.error = true
-        console.log(response)
       })
     }
   }
