@@ -8,7 +8,7 @@
         <my-article-preview
           v-for="ele in articles_list[section]"
           :title="ele.title"
-          :content="ele.summary"
+          :summary="ele.summary"
           :articleId="ele.id"
           :key="ele.id"
         ></my-article-preview>
