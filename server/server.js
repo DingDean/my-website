@@ -11,8 +11,6 @@ app.get('/', function (req, res) {
   res.sendFile(path.resolve(__dirname, '../dist/index.html'))
 });
 
-util.scan()
-
 routes.forEach(route => app.use(route.path, require(route.module)))
 
 app.listen(3000, function () {

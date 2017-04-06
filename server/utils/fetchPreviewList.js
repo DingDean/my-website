@@ -2,15 +2,14 @@ const fs = require('fs')
 const path = require('path')
 
 function fetchList () {
-  var previewList = [];
+  var previewList = {};
   var self = this;
 
-  this.scan = function () {
-    fs.readFile(path.resolve(process.env.ATCINDEX,'./index.md'), 'utf8', (err, buffer) => {
+  this.scan = function (file, callback) {
+    fs.readFile(file, 'utf8', (err, buffer) => {
       if (err)
-        return console.log(err)
+        return callback(err)
       buffer = buffer.split('\n').filter(ele => ele != '')
-      console.log(buffer)
       let len = buffer.length;
       let list = {};
       let pointer = null;
@@ -28,8 +27,10 @@ function fetchList () {
           let name = ct.split('').filter(ele => ele != ' ').join('')
           list[pointer].push(name)
         }
-        console.log(list)
       }
+      previewList = list
+      if (callback)
+        callback(err, list)
     })
   }
 
@@ -37,7 +38,7 @@ function fetchList () {
 
   this.extractArticleInfo = function (buffer) {
     buffer = buffer.split('^')
-    let title = buffer[0].trim()
+    let title = buffer[0].trim().match(/\[(.*)\]/)[1]
     let summary = buffer[1].trim()
     let id = buffer[2].trim()
     return {title, summary, id}
