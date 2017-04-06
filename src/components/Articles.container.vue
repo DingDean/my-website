@@ -3,14 +3,16 @@
     <section v-if="loading">
       <h1>不好意思，现在还没有一篇文章呢！以后这里可以当作一个彩蛋</h1>
     </section>
-    <section v-if="articles_list">
-      <my-article-preview
-        v-for="ele in articles_list"
-        :title="ele.title"
-        :content="ele.summary"
-        :articleId="ele.id"
-        :key="ele.id"
-      ></my-article-preview>
+    <section v-if="sections_list">
+      <div v-for="section in sections_list">
+        <my-article-preview
+          v-for="ele in articles_list[section]"
+          :title="ele.title"
+          :summary="ele.summary"
+          :articleId="ele.id"
+          :key="ele.id"
+        ></my-article-preview>
+      </div>
     </section>
     <section v-if="error">
       <h1>服务器内部错误！以后这里可以有个好玩的东西！</h1>
@@ -26,6 +28,7 @@ export default {
   data () {
     return {
       loading: true,
+      sections_list: null,
       articles_list: null,
       error: null
     }
@@ -40,7 +43,11 @@ export default {
     fetchData () {
       this.$http.get('/articles').then(function (response) {
         this.loading = false
-        this.articles_list = response.body.articles
+        let list = response.body
+        this.sections_list = Object.getOwnPropertyNames(list)
+        this.articles_list = list
+        console.log(this.sections_list)
+        console.log(this.articles_list)
       }, function (response) {
         this.loading = false
         this.error = true
