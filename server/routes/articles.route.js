@@ -3,25 +3,62 @@ const express = require('express')
 const router = express.Router()
 const fs = require('fs');
 const path = require('path')
+const fetchArticles = require(path.resolve(__dirname, '../utils/fetchPreviewList.js'))
 
-router.get('/articles-list', (req, res) => {
-  fs.readFile('../README.md', 'utf8', (err, data) => {
-    res.send({articles: [
-        {title: '标题一', content: '预览内容一', id: 'article_1'},
-        {title: '标题二', content: '预览内容二', id: 'article_2'},
-        {title: '标题三', content: '预览内容三', id: 'article_3'}
-    ]})
+var _preview_list = null
+var _idToTitle = {}
+var articles = {}
+
+fetch((err, articles_list) => {
+  if (err)
+    return console.log(err)
+  _preview_list = articles_list
+  _idToTitle = idToTitle(articles_list)
+})
+
+router.get('/', (req, res) => {
+  if (_preview_list)
+    return res.send(_preview_list)
+  fetch((err, articles) => {
+    if (err)
+      return res.status(500).end(err)
+    _preview_list = articles
+    res.send(articles)
   })
 })
 
-router.get('/articles/:id', (req, res) => {
-  fs.readFile(path.resolve(__dirname,'../README.md'), 'utf8', (err, data) => {
+router.get('/:id', (req, res) => {
+  if (!_idToTitle)
+    return res.status(500).end()
+
+  let id = req.params.id
+  if (articles[id])
+    return res.send({content :articles[id]})
+
+  let filePath = path.resolve(process.env.ATCINDEX, `${_idToTitle[id]}.md`)
+  fs.readFile(filePath, 'utf8', (err, data) => {
     if (err)
-    {
-      console.log(err)
-    }
+      return res.status(404).end()
+    articles[id] = data
     res.send({content: data})
   })
 })
+
+function fetch (callback)
+{
+  fetchArticles.scan(path.resolve(process.env.ATCINDEX, './index.md'), callback)
+}
+
+function idToTitle (list)
+{
+  let idTitle = {}
+  Object.getOwnPropertyNames(list).forEach(section => {
+    let articles = list[section]
+    articles.forEach(article => {
+      idTitle[article.id] = article.title
+    })
+  })
+  return idTitle
+}
 
 module.exports = router

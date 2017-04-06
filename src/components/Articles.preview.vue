@@ -1,7 +1,7 @@
 <template>
   <div @click="jump" class="article-preview-tab">
     <h1>{{title}}</h1>
-    <p>{{content}}</p>
+    <p>{{summary}}</p>
   </div>
 </template>
 
@@ -12,7 +12,7 @@ export default {
     return {
     }
   },
-  props: ['title', 'content', 'articleId'],
+  props: ['title', 'summary', 'articleId'],
   methods: {
     jump () {
       this.$router.push(`/articles/${this.articleId}`)
