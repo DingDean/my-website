@@ -3,18 +3,25 @@ const express = require('express')
 const router = express.Router()
 const fs = require('fs');
 const path = require('path')
-const fetchArticles = require(path.resolve(__dirname, '../utils/fetchPreviewList.js'))
+const mongoose = require('mongoose')
+const schema = mongoose.Schema
+const db_articles = mongoose.model('articles', new schema({}), 'articles')
+
 
 var _preview_list = null
 var _idToTitle = {}
 var articles = {}
 
-fetch((err, articles_list) => {
+db_articles.find({}, (err, docs) => {
   if (err)
     return console.log(err)
-  _preview_list = articles_list
-  _idToTitle = idToTitle(articles_list)
+  if (!docs)
+    return console.log('no articles yet')
+  docs.forEach(doc => {
+
+  })
 })
+
 
 router.get('/', (req, res) => {
   if (_preview_list)
@@ -43,22 +50,5 @@ router.get('/:id', (req, res) => {
     res.send({content: data})
   })
 })
-
-function fetch (callback)
-{
-  fetchArticles.scan(path.resolve(process.env.ATCINDEX, './index.md'), callback)
-}
-
-function idToTitle (list)
-{
-  let idTitle = {}
-  Object.getOwnPropertyNames(list).forEach(section => {
-    let articles = list[section]
-    articles.forEach(article => {
-      idTitle[article.id] = article.title
-    })
-  })
-  return idTitle
-}
 
 module.exports = router
