@@ -5,50 +5,47 @@ const fs = require('fs');
 const path = require('path')
 const mongoose = require('mongoose')
 const schema = mongoose.Schema
-const db_articles = mongoose.model('articles', new schema({}), 'articles')
+const db_articles = mongoose.model('articles', new schema({
+  section: String,
+  title: String,
+  summary: String,
+  content: String,
+  ref: String,
+  createTime: Number,
+  lastModified: Number
+}), 'articles')
 
-
-var _preview_list = null
-var _idToTitle = {}
-var articles = {}
+var _preview_list = []
+var _articles = []
 
 db_articles.find({}, (err, docs) => {
   if (err)
     return console.log(err)
   if (!docs)
     return console.log('no articles yet')
-  docs.forEach(doc => {
-
-  })
+  _articles = docs
+  let len = docs.length
+  for (let i=0;i<len;i++)
+  {
+    let doc = docs[i]
+    _preview_list.push({
+      title: doc.title,
+      summary: doc.summary,
+      ref: doc.ref
+    })
+  }
 })
 
-
 router.get('/', (req, res) => {
-  if (_preview_list)
-    return res.send(_preview_list)
-  fetch((err, articles) => {
-    if (err)
-      return res.status(500).end(err)
-    _preview_list = articles
-    res.send(articles)
-  })
+    res.send({list: _preview_list})
 })
 
 router.get('/:id', (req, res) => {
-  if (!_idToTitle)
-    return res.status(500).end()
-
   let id = req.params.id
-  if (articles[id])
-    return res.send({content :articles[id]})
-
-  let filePath = path.resolve(process.env.ATCINDEX, `${_idToTitle[id]}.md`)
-  fs.readFile(filePath, 'utf8', (err, data) => {
-    if (err)
-      return res.status(404).end()
-    articles[id] = data
-    res.send({content: data})
-  })
+  let article = _articles.find(ele => ele.ref == id)
+  if (article)
+    return res.send({content :article.content})
+  res.status(404).end()
 })
 
 module.exports = router
