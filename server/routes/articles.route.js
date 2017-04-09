@@ -3,17 +3,7 @@ const express = require('express')
 const router = express.Router()
 const fs = require('fs');
 const path = require('path')
-const mongoose = require('mongoose')
-const schema = mongoose.Schema
-const db_articles = mongoose.model('articles', new schema({
-  section: String,
-  title: String,
-  summary: String,
-  content: String,
-  ref: String,
-  createTime: Number,
-  lastModified: Number
-}), 'articles')
+const db_articles = require(path.resolve(__dirname, '../data/articles.db.js'))
 
 var _preview_list = []
 var _articles = []
@@ -24,16 +14,7 @@ db_articles.find({}, (err, docs) => {
   if (!docs)
     return console.log('no articles yet')
   _articles = docs
-  let len = docs.length
-  for (let i=0;i<len;i++)
-  {
-    let doc = docs[i]
-    _preview_list.push({
-      title: doc.title,
-      summary: doc.summary,
-      ref: doc.ref
-    })
-  }
+  _preview_list = genPreviewList(docs)
 })
 
 router.get('/', (req, res) => {
@@ -47,5 +28,15 @@ router.get('/:id', (req, res) => {
     return res.send({content :article.content})
   res.status(404).end()
 })
+
+function genPreviewList (docs) {
+  return docs.map(ele => {
+    return {
+      title: ele.title,
+      summary: ele.summary,
+      ref: ele.ref
+    }
+  })
+}
 
 module.exports = router
