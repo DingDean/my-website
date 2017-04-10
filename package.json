@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "marked": "^0.3.6",
+    "mongoose": "^4.9.3",
     "vue": "^2.2.2",
     "vue-resource": "^1.2.1",
     "vue-router": "^2.2.0"

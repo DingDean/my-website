@@ -3,62 +3,40 @@ const express = require('express')
 const router = express.Router()
 const fs = require('fs');
 const path = require('path')
-const fetchArticles = require(path.resolve(__dirname, '../utils/fetchPreviewList.js'))
+const db_articles = require(path.resolve(__dirname, '../data/articles.db.js'))
 
-var _preview_list = null
-var _idToTitle = {}
-var articles = {}
+var _preview_list = []
+var _articles = []
 
-fetch((err, articles_list) => {
+db_articles.find({}, (err, docs) => {
   if (err)
     return console.log(err)
-  _preview_list = articles_list
-  _idToTitle = idToTitle(articles_list)
+  if (!docs)
+    return console.log('no articles yet')
+  _articles = docs
+  _preview_list = genPreviewList(docs)
 })
 
 router.get('/', (req, res) => {
-  if (_preview_list)
-    return res.send(_preview_list)
-  fetch((err, articles) => {
-    if (err)
-      return res.status(500).end(err)
-    _preview_list = articles
-    res.send(articles)
-  })
+    res.send({list: _preview_list})
 })
 
 router.get('/:id', (req, res) => {
-  if (!_idToTitle)
-    return res.status(500).end()
-
   let id = req.params.id
-  if (articles[id])
-    return res.send({content :articles[id]})
-
-  let filePath = path.resolve(process.env.ATCINDEX, `${_idToTitle[id]}.md`)
-  fs.readFile(filePath, 'utf8', (err, data) => {
-    if (err)
-      return res.status(404).end()
-    articles[id] = data
-    res.send({content: data})
-  })
+  let article = _articles.find(ele => ele.ref == id)
+  if (article)
+    return res.send({content :article.content})
+  res.status(404).end()
 })
 
-function fetch (callback)
-{
-  fetchArticles.scan(path.resolve(process.env.ATCINDEX, './index.md'), callback)
-}
-
-function idToTitle (list)
-{
-  let idTitle = {}
-  Object.getOwnPropertyNames(list).forEach(section => {
-    let articles = list[section]
-    articles.forEach(article => {
-      idTitle[article.id] = article.title
-    })
+function genPreviewList (docs) {
+  return docs.map(ele => {
+    return {
+      title: ele.title,
+      summary: ele.summary,
+      ref: ele.ref
+    }
   })
-  return idTitle
 }
 
 module.exports = router
