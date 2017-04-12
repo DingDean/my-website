@@ -3,7 +3,6 @@ const app = express()
 const path = require('path')
 const fs = require('fs')
 const routes = require('./routes/routes.config.js')
-const util = require('./utils/fetchPreviewList')
 const mongoose = require('mongoose')
 mongoose.connect('mongodb://localhost/test')
 const mdb = mongoose.connection
