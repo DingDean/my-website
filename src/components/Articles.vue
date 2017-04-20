@@ -1,11 +1,40 @@
 <template>
-  <div v-html="mdHtml" class="my-article"></div>
+  <div class="my-article-containter">
+    <section v-if="loading">
+      <h1>不好意思，现在还没有一篇文章呢！以后这里可以当作一个彩蛋</h1>
+    </section>
+    <div v-if="mdHtml" v-html="mdHtml" class="my-article"></div>
+  </div>
 </template>
 
 <script>
+import marked from 'marked'
+
 export default {
   name: 'my-article',
-  props: ['mdHtml']
+  data () {
+    return {
+      loading: true,
+      md: null
+    }
+  },
+  props: ['articleId'],
+  created () {
+    this.fetchData()
+  },
+  methods: {
+    fetchData () {
+      this.$http.get(`/articles/${this.articleId}`).then(res => {
+        this.loading = false
+        this.md = res.body.content
+      })
+    }
+  },
+  computed: {
+    mdHtml () {
+      return marked(this.md)
+    }
+  }
 }
 </script>
 

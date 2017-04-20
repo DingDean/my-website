@@ -1,12 +1,21 @@
 <template>
   <div id="app">
+    <my-header></my-header>
     <router-view></router-view>
+    <my-legal-info></my-legal-info>
   </div>
 </template>
 
 <script>
+import MyHeader from './components/Header.vue'
+import MyLegalInfo from './components/legal.footer.vue'
+
 export default {
-  name: 'app'
+  name: 'app',
+  components: {
+    MyHeader,
+    MyLegalInfo
+  }
 }
 </script>
 
