@@ -26,6 +26,7 @@ export default {
 .article-preview-tab {
   border-radius: 2px;
   color: #444;
+  padding: 0 5px;
   background: #fff;
   font-family: 'Open Sans', Helvetica, sans-serif;
   font-weight: 300;
