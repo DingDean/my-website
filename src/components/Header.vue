@@ -2,8 +2,7 @@
   <div id='my-header'>
     <h1 id="my-title">二向箔</h1>
     <div id="my-desc">
-      <p>嘿,你好,我是丁科,这片二向箔的管理员.</p>
-      <p>二向箔是我与你连接的纽带,是实体世界坍塌为网络世界的缘起.</p>
+      <p>现实坍缩于网络</p>
     </div>
   </div>
 </template>
@@ -16,8 +15,7 @@ export default {
 
 <style scoped>
 #my-header {
-  margin: 1rem auto;
-  max-width: 48rem;
+  margin: 2rem auto 2rem;
   max-height:14rem;
 }
 
@@ -25,21 +23,17 @@ export default {
   text-align: center;
   transition: all 0.3s cubic-bezier(.25,.8,.25,1);
   animation: slidein 1s 1;
+  margin: 0 auto;
+  font-size: 65px;
+  line-height: 0.9;
 }
 
 #my-desc {
   text-align: center;
+  margin: 15px auto;
 }
 
-@keyframes slidein {
-  from {
-    transform: translateY(-10px);
-    opacity: 0;
-  }
-
-  to {
-    transform: translateY(0px);
-    opacity: 100%;
-  }
+#my-desc p {
+  margin: 0 auto;
 }
 </style>
