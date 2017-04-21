@@ -13,10 +13,8 @@ export default {
 <style>
 
 #my-legal-info {
-  position: absolute;
-  bottom: 0;
   width: 100%;
-  margin: 0 auto;
+  margin: 1em auto;
   text-align: center;
   font-size: 20px;
 }

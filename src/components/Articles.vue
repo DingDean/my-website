@@ -88,12 +88,12 @@ export default {
 }
 
 .my-article {
-  color: #444;
+  color: #333;
   font-family: 'Open Sans', Helvetica, sans-serif;
   font-weight: 300;
   margin: 6rem auto 1rem;
   max-width: 48rem;
-  text-align: center;
+  text-align: left;
 }
 
 .my-article img {
@@ -122,20 +122,17 @@ export default {
 
 .my-article blockquote {
   margin: 0;
-  border-left: 5px solid #7a7a7a;
+  border-left: 4px solid #ddd;
   font-style: italic;
-  padding: 1.33em;
+  padding: 0 15px;
   text-align: left;
+  color: #777;
 }
 
 .my-article ul,
 .my-article ol,
 .my-article li {
   text-align: left;
-}
-
-.my-article p {
-  color: #777;
 }
 
 </style>
