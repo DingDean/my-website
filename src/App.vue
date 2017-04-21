@@ -1,8 +1,11 @@
 <template>
   <div id="app">
-    <my-header></my-header>
-    <router-view></router-view>
-    <my-legal-info></my-legal-info>
+    <div id="app-top-half">
+      <my-header></my-header>
+      <router-view></router-view>
+    </div>
+    <my-legal-info/>
+
   </div>
 </template>
 
@@ -47,4 +50,9 @@ body {
   color: #2c3e50;
   margin-top: 60px;
 }
+
+#app-top-half {
+  min-height: 98vh;
+}
+
 </style>

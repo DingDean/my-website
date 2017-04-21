@@ -14,7 +14,7 @@ export default {
 
 #my-legal-info {
   width: 100%;
-  margin: 1rem auto;
+  margin: 1em auto;
   text-align: center;
   font-size: 20px;
 }
