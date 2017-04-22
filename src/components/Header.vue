@@ -4,6 +4,7 @@
     <div id="my-desc">
       <p>现实坍缩于网络</p>
     </div>
+    <a href="https://github.com/DingDean"><img src="/static/Github_PNG/GitHub-Mark-32px.png" alt="GitHub"/></a>
   </div>
 </template>
 
@@ -36,5 +37,16 @@ export default {
 
 #my-desc p {
   margin: 0 auto;
+}
+
+a {
+  display: block;
+  max-width: 40px;
+  margin: auto;
+}
+
+img {
+  display: block;
+  margin: auto;
 }
 </style>
