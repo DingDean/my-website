@@ -4,12 +4,17 @@
     <div id="my-desc">
       <p>现实坍缩于网络</p>
     </div>
-    <a href="https://github.com/DingDean"><img src="/static/Github_PNG/GitHub-Mark-32px.png" alt="GitHub"/></a>
+    <a v-bind:href="url"><img src="/static/Github_PNG/GitHub-Mark-32px.png" alt="GitHub"/></a>
   </div>
 </template>
 
 <script>
 export default {
+  data () {
+    return {
+      url: 'https://github.com/DingDean'
+    }
+  },
   name: 'my-header'
 }
 </script>
