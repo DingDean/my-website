@@ -41,6 +41,7 @@
 - [ ] 加入网站总标题下的SVG动画
 - [ ] 加入阅后即焚功能
 - [ ] 加入网站导航栏(静态)
+- [ ] 加入Web App Manifest
 
 ## Build Setup
 
