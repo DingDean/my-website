@@ -46,12 +46,12 @@
 
 - [X] 加入网站总标题(静态)
 - [X] 加入Github的图片链接
+- [ ] Progressive Web App 改造
 - [ ] 加入欢迎文字
 - [ ] 加入网站LOGO及其动画(静态)
 - [ ] 加入网站总标题下的SVG动画
 - [ ] 加入阅后即焚功能
 - [ ] 加入网站导航栏(静态)
-- [ ] Progressive Web App 改造
 
 ## Build Setup
 
