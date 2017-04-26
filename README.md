@@ -36,17 +36,22 @@
 * 可以直接在手机上操作
 * 如果一个用户正好鼠标移动到此条消息上,那么会触发一个动画或者小游戏
 
+## Progressive Web App
+
+* 升级网站为HTTPS
+* 写出web app shell
+* 使用service worker
+
 ## 待做事项
 
 - [X] 加入网站总标题(静态)
 - [X] 加入Github的图片链接
-- [ ] 完善文章添加和更新的机制
 - [ ] 加入欢迎文字
 - [ ] 加入网站LOGO及其动画(静态)
 - [ ] 加入网站总标题下的SVG动画
 - [ ] 加入阅后即焚功能
 - [ ] 加入网站导航栏(静态)
-- [ ] 加入Web App Manifest
+- [ ] Progressive Web App 改造
 
 ## Build Setup
 
