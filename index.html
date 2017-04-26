@@ -6,12 +6,27 @@
     <meta name="keywords" content="丁科,Ke Ding, 温州,技术,Tech,游戏,Game">
     <meta name="author" content="丁科">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>二向箔</title>
   </head>
   <body>
+
+    <div id='my-header'>
+      <h1 id="my-title">二向箔</h1>
+      <div id="my-desc">
+        <p>现实坍缩于网络</p>
+      </div>
+      <a href="https://github.com/DingDean"><img src="/static/Github_PNG/GitHub-Mark-32px.png" alt="GitHub"/></a>
+    </div>
+
     <div id="app"></div>
     <!-- built files will be auto injected -->
+
+    <div id="my-legal-info">
+      <a href="http://www.miitbeian.gov.cn/">浙ICP备 17015444号</a>
+    </div>
   </body>
+
 <style>
 body, html {
   height: 100%;
@@ -24,5 +39,59 @@ body, html {
   padding: 0;
   min-height: 100vh;
 }
+
+#my-header {
+  margin: 0 auto 2rem auto;
+  padding-top: 2rem;
+  max-height:14rem;
+}
+
+#my-title {
+  text-align: center;
+  margin: 0 auto;
+  font-size: 65px;
+  line-height: 0.9;
+}
+
+#my-desc {
+  text-align: center;
+  margin: 15px auto;
+}
+
+#my-desc p {
+  margin: 0 auto;
+}
+
+#my-header a {
+  display: block;
+  max-width: 40px;
+  margin: auto;
+}
+
+#my-header img {
+  display: block;
+  margin: auto;
+}
+
+#my-legal-info {
+  width: 100%;
+  margin: 1em auto;
+  text-align: center;
+  font-size: 20px;
+}
+
+#my-legal-info a {
+  text-decoration: none;
+  color: gray;
+}
 </style>
+
+  <script>
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker
+    .register('/service_worker.js')
+    .then(function () {console.log('Service Worker Registered!')})
+}
+  </script>
+
 </html>
