@@ -47,6 +47,7 @@
 - [X] 加入网站总标题(静态)
 - [X] 加入Github的图片链接
 - [ ] Progressive Web App 改造
+- [ ] 设计Banner Logo和favico
 - [ ] 加入欢迎文字
 - [ ] 加入网站LOGO及其动画(静态)
 - [ ] 加入网站总标题下的SVG动画
