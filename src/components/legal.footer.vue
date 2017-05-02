@@ -3,7 +3,7 @@
     <a href="http://www.miitbeian.gov.cn/">浙ICP备 17015444号</a>
     <div style="width:300px;margin:0 auto; padding:5px 0;">
       <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33030202000658" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;">
-        <img src="../assets/bei_an.png" style="float:left;"/>
+        <img src="../assets/bei_an.png" style="float:left;" alt="公安备案"/>
         <p style="float:left;height:20px;line-height:20px;margin: 0px 0px 0px 5px; color:#939393;">浙公网安备 33030202000658号</p>
       </a>
     </div>
