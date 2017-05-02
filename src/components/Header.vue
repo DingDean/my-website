@@ -1,6 +1,6 @@
 <template>
   <div id='my-header'>
-    <h1 id="my-title">二向箔</h1>
+    <h1 @click="goToIndex" id="my-title">二向箔</h1>
     <div id="my-desc">
       <p>现实坍缩于网络</p>
     </div>
@@ -13,6 +13,11 @@ export default {
   data () {
     return {
       url: 'https://github.com/DingDean'
+    }
+  },
+  methods: {
+    goToIndex () {
+      this.$router.push('/')
     }
   },
   name: 'my-header'
@@ -33,6 +38,10 @@ export default {
   margin: 0 auto;
   font-size: 65px;
   line-height: 0.9;
+}
+
+#my-title:hover {
+  cursor: pointer;
 }
 
 #my-desc {
