@@ -10,6 +10,7 @@ const mdb = mongoose.connection
 handleMongo(mdb)
 
 app.use('/static', express.static(path.resolve(__dirname, '../dist/static')))
+app.use('/', express.static(path.resolve(__dirname, '../dist')))
 
 app.get('/', function (req, res) {
   res.sendFile(path.resolve(__dirname, '../dist/index.html'))

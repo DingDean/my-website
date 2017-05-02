@@ -6,12 +6,15 @@
     <meta name="keywords" content="丁科,Ke Ding, 温州,技术,Tech,游戏,Game">
     <meta name="author" content="丁科">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>二向箔</title>
+    <link rel="manifest" href="/static/manifest.json">
   </head>
   <body>
     <div id="app"></div>
     <!-- built files will be auto injected -->
   </body>
+
 <style>
 body, html {
   height: 100%;
@@ -25,4 +28,13 @@ body, html {
   min-height: 100vh;
 }
 </style>
+
+  <script>
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker
+    .register('/service_worker.js')
+    .then(function () {console.log('Service Worker Registered!')})
+}
+  </script>
+
 </html>
