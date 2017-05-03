@@ -24,7 +24,7 @@ export default {
   text-align: center;
   font-size: 15px;
   border-top: solid gray 1px;
-  padding: 5px;
+  padding-top: 5px;
 }
 
 #my-legal-info a {
