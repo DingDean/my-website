@@ -42,17 +42,24 @@
 * 写出web app shell
 * 使用service worker
 
+## 优雅的应对错误
+
+* 在前端或者后端遇到错误的时候，前端会展示一个合适的页面
+* 这个页面根据每个错误订制
+* 这个页面可以是SVG动画，也可以是一个互动的小游戏
+
 ## 待做事项
 
 - [X] 加入网站总标题(静态)
 - [X] 加入Github的图片链接
-- [ ] Progressive Web App 改造
+- [X] Progressive Web App 改造
 - [ ] 设计Banner Logo和favico
 - [ ] 加入欢迎文字
 - [ ] 加入网站LOGO及其动画(静态)
 - [ ] 加入网站总标题下的SVG动画
 - [ ] 加入阅后即焚功能
 - [ ] 加入网站导航栏(静态)
+- [ ] 加入错误信息窗口
 
 ## Build Setup
 
