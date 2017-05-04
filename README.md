@@ -54,7 +54,7 @@
 - [X] 加入Github的图片链接
 - [X] Progressive Web App 改造
 - [X] 加入错误信息窗口
-- [ ] 设计Banner Logo和favico
+- [X] 设计Banner Logo和favico
 - [ ] 加入欢迎文字
 - [ ] 加入网站LOGO及其动画(静态)
 - [ ] 加入网站总标题下的SVG动画

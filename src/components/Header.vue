@@ -4,7 +4,7 @@
     <div id="my-desc">
       <p>现实坍缩于网络</p>
     </div>
-    <a v-bind:href="url"><img src="/static/Github_PNG/GitHub-Mark-32px.png" alt="GitHub"/></a>
+    <a v-bind:href="github_url" target="_blank"><img src="/static/Github_PNG/GitHub-Mark-32px.png" alt="GitHub"/></a>
   </div>
 </template>
 
@@ -12,7 +12,7 @@
 export default {
   data () {
     return {
-      url: 'https://github.com/DingDean'
+      github_url: 'https://github.com/DingDean'
     }
   },
   methods: {
