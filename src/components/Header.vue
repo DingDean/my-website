@@ -34,7 +34,6 @@ export default {
 #my-title {
   text-align: center;
   transition: all 0.3s cubic-bezier(.25,.8,.25,1);
-  animation: slidein 1s 1;
   margin: 0 auto;
   font-size: 65px;
   line-height: 0.9;
