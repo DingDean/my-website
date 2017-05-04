@@ -1,20 +1,19 @@
 <template>
   <div class="my-article-containter">
-    <section v-if="loading">
-      <h1>不好意思，现在还没有一篇文章呢！以后这里可以当作一个彩蛋</h1>
-    </section>
-    <div v-if="mdHtml" v-html="mdHtml" class="my-article"></div>
+    <my-error-handler v-if='error'></my-error-handler>
+    <div v-if="md" v-html="mdHtml" class="my-article"></div>
   </div>
 </template>
 
 <script>
 import marked from 'marked'
+import MyErrorHandler from './Error.vue'
 
 export default {
   name: 'my-article',
   data () {
     return {
-      loading: true,
+      error: null,
       md: null
     }
   },
@@ -25,8 +24,9 @@ export default {
   methods: {
     fetchData () {
       this.$http.get(`/articles/${this.articleId}`).then(res => {
-        this.loading = false
         this.md = res.body.content
+      }, res => {
+        this.error = true
       })
     }
   },
@@ -34,6 +34,9 @@ export default {
     mdHtml () {
       return marked(this.md)
     }
+  },
+  components: {
+    MyErrorHandler
   }
 }
 </script>
