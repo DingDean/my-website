@@ -1,8 +1,6 @@
 <template>
   <div class="articles-container">
-    <section v-if="loading">
-      <h1>不好意思，现在还没有一篇文章呢！以后这里可以当作一个彩蛋</h1>
-    </section>
+    <my-error-handler v-if='error'></my-error-handler>
     <section v-if="articles_list">
       <my-article-preview
         v-for="ele in articles_list"
@@ -12,20 +10,17 @@
         :key="ele.id"
       ></my-article-preview>
     </section>
-    <section v-if="error">
-      <h1>服务器内部错误！以后这里可以有个好玩的东西！</h1>
-    </section>
   </div>
 </template>
 
 <script>
 import MyArticlePreview from './Articles.preview.vue'
+import MyErrorHandler from './Error.vue'
 
 export default {
   name: 'article',
   data () {
     return {
-      loading: true,
       articles_list: null,
       error: null
     }
@@ -34,16 +29,15 @@ export default {
     this.fetchData()
   },
   components: {
-    MyArticlePreview
+    MyArticlePreview,
+    MyErrorHandler
   },
   methods: {
     fetchData () {
-      this.$http.get('/articles').then(function (response) {
-        this.loading = false
+      this.$http.get('/articles').then(response => {
         let list = response.body.list
         this.articles_list = list
-      }, function (response) {
-        this.loading = false
+      }, response => {
         this.error = true
       })
     }
