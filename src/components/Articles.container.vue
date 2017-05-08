@@ -26,6 +26,7 @@ export default {
     }
   },
   created () {
+    this.$store.commit('activeLoad')
     this.fetchData()
   },
   components: {
@@ -37,7 +38,9 @@ export default {
       this.$http.get('/articles').then(response => {
         let list = response.body.list
         this.articles_list = list
+        this.$store.commit('deactiveLoad')
       }, response => {
+        this.$store.commit('deactiveLoad')
         this.error = true
       })
     }

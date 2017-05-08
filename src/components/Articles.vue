@@ -20,13 +20,18 @@ export default {
   props: ['articleId'],
   created () {
     this.fetchData()
+    this.$store.commit('activeLoad')
   },
   methods: {
     fetchData () {
       this.$http.get(`/articles/${this.articleId}`).then(res => {
         this.md = res.body.content
+        setTimeout(() => {
+          this.$store.commit('deactiveLoad')
+        }, 4000)
       }, res => {
         this.error = true
+        this.$store.commit('deactiveLoad')
       })
     }
   },

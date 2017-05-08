@@ -2,6 +2,7 @@
   <div id="app">
     <div id="app-top-half">
       <my-header/>
+      <my-loader v-if="loading"/>
       <router-view></router-view>
     </div>
     <my-legal-info/>
@@ -11,12 +12,19 @@
 <script>
 import MyHeader from './components/Header.vue'
 import MyLegalInfo from './components/legal.footer.vue'
+import MyLoader from './components/loader.vue'
 
 export default {
   name: 'app',
+  computed: {
+    loading () {
+      return this.$store.state.loading
+    }
+  },
   components: {
     MyHeader,
-    MyLegalInfo
+    MyLegalInfo,
+    MyLoader
   }
 }
 </script>
