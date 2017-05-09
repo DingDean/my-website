@@ -1,15 +1,17 @@
 <template>
   <div class="articles-container">
     <my-error-handler v-if='error'></my-error-handler>
-    <section v-if="articles_list">
-      <my-article-preview
-        v-for="ele in articles_list"
-        :title="ele.title"
-        :summary="ele.summary"
-        :articleId="ele.ref"
-        :key="ele.id"
-      ></my-article-preview>
-    </section>
+    <transition name="slide-fade">
+      <section v-if="articles_list">
+        <my-article-preview
+          v-for="ele in articles_list"
+          :title="ele.title"
+          :summary="ele.summary"
+          :articleId="ele.ref"
+          :key="ele.id"
+        ></my-article-preview>
+      </section>
+    </transition>
   </div>
 </template>
 
@@ -49,4 +51,18 @@ export default {
 </script>
 
 <style scoped>
+
+.slide-fade-enter-active {
+  transition: all .3s ease;
+}
+
+.slide-fade-leave-active {
+  transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+
+.slide-fade-enter, .slide-fade-leave-to {
+  opacity: 0;
+  transform: translateY(10px)
+}
+
 </style>

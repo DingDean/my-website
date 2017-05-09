@@ -2,7 +2,9 @@
   <div id="app">
     <div id="app-top-half">
       <my-header/>
-      <my-loader v-if="loading"/>
+      <transition name="spinner">
+        <my-loader v-if="loading"/>
+      </transition>
       <router-view></router-view>
     </div>
     <my-legal-info/>
@@ -61,5 +63,23 @@ body {
 #app-top-half {
   min-height: 98vh;
 }
+.spinner-enter-active {
+  transition: all .3s ease;
+}
+.spiiner-leave-active {
+  transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+  animation: fade-out 0.8s;
+}
+.spinner-enter, .spinner-leave-to {
+  opacity: 0;
+}
 
+@keyframes fade-out {
+  0% {
+    transform: translateY(0)
+  }
+  100% {
+    transform: translateY(20px)
+  }
+}
 </style>
