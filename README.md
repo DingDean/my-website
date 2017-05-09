@@ -60,6 +60,7 @@
 - [X] Progressive Web App 改造
 - [X] 加入错误信息窗口
 - [X] 设计Banner Logo和favico
+- [ ] 引入Vuex
 - [ ] 加入Spinner
 - [ ] 使用sw tools来缓存文章请求
 - [ ] 加入欢迎文字
