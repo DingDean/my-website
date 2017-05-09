@@ -1,7 +1,9 @@
 <template>
   <div class="my-article-containter">
     <my-error-handler v-if='error'></my-error-handler>
-    <div v-if="md" v-html="mdHtml" class="my-article"></div>
+    <transition name="slide-fade">
+      <div v-if="md" v-html="mdHtml" class="my-article"></div>
+    </transition>
   </div>
 </template>
 
@@ -20,13 +22,16 @@ export default {
   props: ['articleId'],
   created () {
     this.fetchData()
+    this.$store.commit('activeLoad')
   },
   methods: {
     fetchData () {
       this.$http.get(`/articles/${this.articleId}`).then(res => {
         this.md = res.body.content
+        this.$store.commit('deactiveLoad')
       }, res => {
         this.error = true
+        this.$store.commit('deactiveLoad')
       })
     }
   },
@@ -94,7 +99,7 @@ export default {
   color: #333;
   font-family: 'Open Sans', Helvetica, sans-serif;
   font-weight: 300;
-  margin: 6rem auto 1rem;
+  margin: 1rem auto 1rem;
   max-width: 48rem;
   text-align: left;
 }
@@ -136,6 +141,19 @@ export default {
 .my-article ol,
 .my-article li {
   text-align: left;
+}
+
+.slide-fade-enter-active {
+  transition: all .3s ease;
+}
+
+.slide-fade-leave-active {
+  transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+
+.slide-fade-enter, .slide-fade-leave-to {
+  opacity: 0;
+  transform: translateY(10px)
 }
 
 </style>
