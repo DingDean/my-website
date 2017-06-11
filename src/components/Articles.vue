@@ -47,6 +47,9 @@ export default {
 </script>
 
 <style>
+.my-article {
+  padding: 20px;
+}
 .my-article h1,
 .my-article h2,
 .my-article h3,
