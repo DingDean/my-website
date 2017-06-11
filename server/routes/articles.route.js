@@ -23,7 +23,7 @@ pull.on('message', (msg) => {
 })
 
 router.get('/', (req, res) => {
-    res.send({list: _preview_list})
+    res.send({list: _preview_list.reverse()})
 })
 
 router.get('/:id', (req, res) => {
