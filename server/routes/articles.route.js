@@ -23,7 +23,7 @@ pull.on('message', (msg) => {
 })
 
 router.get('/', (req, res) => {
-    res.send({list: _preview_list.reverse()})
+    res.send({list: _preview_list})
 })
 
 router.get('/:id', (req, res) => {
@@ -39,7 +39,8 @@ function genPreviewList (docs) {
     return {
       title: ele.title,
       summary: ele.summary,
-      ref: ele.ref
+      ref: ele.ref,
+      id: ele.createTime + ele.lastModified
     }
   })
 }
@@ -51,7 +52,7 @@ function refresh() {
     if (!docs)
       return console.log('no articles yet')
     _articles = docs
-    _preview_list = genPreviewList(docs)
+    _preview_list = genPreviewList(docs).reverse()
   })
 }
 
