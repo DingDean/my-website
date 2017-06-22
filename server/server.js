@@ -1,4 +1,5 @@
 const express = require('express')
+const compression = require('compression')
 const app = express()
 const path = require('path')
 const fs = require('fs')
@@ -9,6 +10,7 @@ const mdb = mongoose.connection
 
 handleMongo(mdb)
 
+app.use(compression)
 app.use(require('connect-history-api-fallback')())
 app.use('/static', express.static(path.resolve(__dirname, '../dist/static')))
 app.use('/', express.static(path.resolve(__dirname, '../dist')))
