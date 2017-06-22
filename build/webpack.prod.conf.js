@@ -96,7 +96,11 @@ var webpackConfig = merge(baseWebpackConfig, {
     new SWPrecacheWebpackPlugin({
       cacheId: 'dingke-blog',
       filename: 'service_worker.js',
-      minify: true
+      minify: true,
+      runtimeCaching: [{
+        urlPattern:/^https:\/\/dingkewz\.com\//,
+        handler: 'networkFirst'
+      }]
     })
   ]
 })
