@@ -5,7 +5,7 @@
       <transition name="spinner">
         <my-loader v-if="loading"/>
       </transition>
-      <router-view></router-view>
+      <router-view class="view"></router-view>
     </div>
     <my-legal-info/>
   </div>
@@ -45,6 +45,7 @@ html
 
 body
   line-height 1.85
+  background-color lighten(#eceef1, 30%)
 
 #app
   font-family 'Avenir', Helvetica, Arial, sans-serif
@@ -52,6 +53,9 @@ body
   -moz-osx-font-smoothing grayscale
   color #2c3e50
   margin-top 60px
+
+.view
+  margin-top 77px
 
 #app-top-half
   min-height 98vh
