@@ -8,8 +8,7 @@
 export default {}
 </script>
 
-<style>
-.my-error-handler {
-  text-align: center;
-}
+<style lang="stylus">
+.my-error-handler
+  text-align center
 </style>

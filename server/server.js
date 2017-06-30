@@ -5,12 +5,15 @@ const path = require('path')
 const fs = require('fs')
 const routes = require('./routes/routes.config.js')
 const mongoose = require('mongoose')
+const bodyParser = require('body-parser')
 mongoose.connect('mongodb://localhost/test')
 const mdb = mongoose.connection
 
 handleMongo(mdb)
 
 app.use(compression())
+app.use(bodyParser.urlencoded({extended: false}))
+aap.use(bodyParser.json())
 app.use(require('connect-history-api-fallback')())
 app.use('/static', express.static(path.resolve(__dirname, '../dist/static')))
 app.use('/', express.static(path.resolve(__dirname, '../dist')))

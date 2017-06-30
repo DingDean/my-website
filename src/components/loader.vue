@@ -8,31 +8,29 @@
   export default {}
 </script>
 
-<style scoped>
-.spinner {
-  animation: rotator 1.4s linear infinite;
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  z-index: 1;
-  margin: auto;
-}
+<style scoped lang="stylus">
+.spinner
+  animation rotator 1.4s linear infinite
+  position absolute
+  left 0
+  right 0
+  top 0
+  bottom 0
+  z-index 1
+  margin auto
 
-@keyframes rotator {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(270deg); }
-}
 
-.path {
-  stroke-dasharray: 188;
-  stroke-dashoffset: 0;
-  transform-origin: center;
-  animation:
-  dash 1.4s ease-in-out infinite,
-  colors 5.6s ease-in-out infinite;
-}
+@keyframes rotator
+  0%
+    transform rotate(0deg)
+  100%
+    transform: rotate(270deg)
+
+.path
+  stroke-dasharray 188
+  stroke-dashoffset 0
+  transform-origin center
+  animation dash 1.4s ease-in-out infinite, colors 5.6s ease-in-out infinite;
 
 @keyframes colors {
   0% { stroke: #4285F4; }

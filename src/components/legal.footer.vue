@@ -16,20 +16,19 @@ export default {
 }
 </script>
 
-<style>
+<style lang="stylus">
 
-#my-legal-info {
-  width: 100%;
-  margin: 1em auto 0;
-  text-align: center;
-  font-size: 15px;
-  border-top: solid gray 1px;
-  padding-top: 5px;
-}
+#my-legal-info
+  width 100%
+  margin 1em auto 0
+  text-align center
+  font-size 15px
+  border-top solid gray 1px
+  padding-top 5px
 
-#my-legal-info a {
-  text-decoration: none;
-  color: gray;
-}
+#my-legal-info
+  a
+    text-decoration none
+    color gray
 
 </style>
