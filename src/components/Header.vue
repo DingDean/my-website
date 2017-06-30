@@ -24,42 +24,33 @@ export default {
 }
 </script>
 
-<style scoped>
-#my-header {
-  margin: 0 auto 2rem auto;
-  padding-top: 2rem;
-  max-height:14rem;
-}
+<style scoped lang="stylus">
+#my-header
+  margin 0 auto 2rem auto
+  padding-top 2rem
+  max-height 14rem
 
-#my-title {
-  text-align: center;
-  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
-  margin: 0 auto;
-  font-size: 65px;
-  line-height: 0.9;
-}
+#my-title
+  text-align center
+  transition all 0.3s cubic-bezier(.25,.8,.25,1)
+  margin 0 auto
+  font-size 65px
+  line-height 0.9
+  &:hover
+    cursor: pointer;
 
-#my-title:hover {
-  cursor: pointer;
-}
+#my-desc
+  text-align center
+  margin 15px auto
+  p
+    margin: 0 auto;
 
-#my-desc {
-  text-align: center;
-  margin: 15px auto;
-}
+a
+  display block
+  max-width 40px
+  margin auto
 
-#my-desc p {
-  margin: 0 auto;
-}
-
-a {
-  display: block;
-  max-width: 40px;
-  margin: auto;
-}
-
-img {
-  display: block;
-  margin: auto;
-}
+img
+  display block
+  margin auto
 </style>

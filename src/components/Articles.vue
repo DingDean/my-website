@@ -46,117 +46,70 @@ export default {
 }
 </script>
 
-<style>
-.my-article {
-  padding: 20px;
-}
-.my-article h1,
-.my-article h2,
-.my-article h3,
-.my-article h4 {
-  margin: 1.414rem 0 .5rem;
-  font-weight: inherit;
-  line-height: 1.42;
-}
+<style lang="stylus">
+.my-article
+  color #333
+  font-family 'Open Sans', Helvetica, sans-serif
+  font-weight 300
+  margin 1rem auto 1rem
+  max-width 48rem
+  text-align left
+  padding 20px
+  h1, h2, h3, h4
+    margin 1.414rem 0 .5rem
+    font-weight inherit
+    line-height 1.42
+  h1
+    margin-top 0
+    font-size 3.998rem
+  h2
+    font-size 2.827rem
+  h3
+    font-size 1.999rem
+  h4
+    font-size 1.414rem
+  h5
+    font-size 1.121rem
+  h6
+    font-size .88rem
+  h7
+    font-size .707rem
+  img, canvas, iframe, video, svg, select, textarea
+    max-width 100%
+  img
+    border-radius 50%
+    height 200px
+    width 200px
+    margin 0 auto
+  a
+    color #3498db
+    &:visited
+      color #3498db
+    &:hover
+    &:focus
+    &:active
+      color #2980b9
+  pre
+    background-color #fafafa
+    padding 1rem
+    text-align left
+  blockquote
+    margin 0
+    border-left 4px solid #ddd
+    font-style italic
+    padding 0 15px
+    text-align left
+    color #777
+  ul, ol, li
+    text-align left
 
-.my-article h1 {
-  margin-top: 0;
-  font-size: 3.998rem;
-}
+.slide-fade-enter-active
+  transition all .3s ease
 
-.my-article h2 {
-  font-size: 2.827rem;
-}
+.slide-fade-leave-active
+  transition all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0)
 
-.my-article h3 {
-  font-size: 1.999rem;
-}
-
-.my-article h4 {
-  font-size: 1.414rem;
-}
-
-.my-article h5 {
-  font-size: 1.121rem;
-}
-
-.my-article h6 {
-  font-size: .88rem;
-}
-
-.my-article small {
-  font-size: .707rem;
-}
-
-.my-article img,
-.my-article canvas,
-.my-article iframe,
-.my-article video,
-.my-article svg,
-.my-article select,
-.my-article textarea {
-  max-width: 100%;
-}
-
-.my-article {
-  color: #333;
-  font-family: 'Open Sans', Helvetica, sans-serif;
-  font-weight: 300;
-  margin: 1rem auto 1rem;
-  max-width: 48rem;
-  text-align: left;
-}
-
-.my-article img {
-  border-radius: 50%;
-  height: 200px;
-  margin: 0 auto;
-  width: 200px;
-}
-
-.my-article a,
-.my-article a:visited {
-  color: #3498db;
-}
-
-.my-article a:hover,
-.my-article a:focus,
-.my-article a:active {
-  color: #2980b9;
-}
-
-.my-article pre {
-  background-color: #fafafa;
-  padding: 1rem;
-  text-align: left;
-}
-
-.my-article blockquote {
-  margin: 0;
-  border-left: 4px solid #ddd;
-  font-style: italic;
-  padding: 0 15px;
-  text-align: left;
-  color: #777;
-}
-
-.my-article ul,
-.my-article ol,
-.my-article li {
-  text-align: left;
-}
-
-.slide-fade-enter-active {
-  transition: all .3s ease;
-}
-
-.slide-fade-leave-active {
-  transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
-}
-
-.slide-fade-enter, .slide-fade-leave-to {
-  opacity: 0;
-  transform: translateY(10px)
-}
-
+.slide-fade-enter, .slide-fade-leave-to
+  opacity 0
+  transform translateY(10px)
 </style>

@@ -31,55 +31,42 @@ export default {
 }
 </script>
 
-<style>
-html {
-  font-size: 12px;
-}
+<style lang="stylus">
+html
+  font-size 12px
 
-@media (min-width: 32rem) and (max-width: 48rem) {
-  html {
-    font-size: 15px;
-  }
-}
+@media (min-width: 32rem) and (max-width: 48rem)
+  html
+    font-size 15px
 
-@media (min-width: 48rem) {
-  html {
-    font-size: 16px;
-  }
-}
+@media (min-width: 48rem)
+  html
+    font-size 16px
 
-body {
-  line-height: 1.85
-}
+body
+  line-height 1.85
 
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+#app
+  font-family 'Avenir', Helvetica, Arial, sans-serif
+  -webkit-font-smoothing antialiased
+  -moz-osx-font-smoothing grayscale
+  color #2c3e50
+  margin-top 60px
 
-#app-top-half {
-  min-height: 98vh;
-}
-.spinner-enter-active {
-  transition: all .3s ease;
-}
-.spiiner-leave-active {
-  transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
-  animation: fade-out 0.8s;
-}
-.spinner-enter, .spinner-leave-to {
-  opacity: 0;
-}
+#app-top-half
+  min-height 98vh
 
-@keyframes fade-out {
-  0% {
-    transform: translateY(0)
-  }
-  100% {
-    transform: translateY(20px)
-  }
-}
+.spinner-enter-active
+  transition all .3s ease
+
+.spinner-leave-active
+  transition all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0)
+  animation fade-out 0.3s
+
+.spinner-enter, .spinner-leave-to
+  opacity 0
+
+@keyframes fade-out
+  0% transform translateY(0)
+  100% transform translateY(20px)
 </style>

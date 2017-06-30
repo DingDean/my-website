@@ -97,10 +97,12 @@ var webpackConfig = merge(baseWebpackConfig, {
       cacheId: 'dingke-blog',
       filename: 'service_worker.js',
       minify: true,
-      runtimeCaching: [{
-        urlPattern:/^https:\/\/dingkewz\.com\//,
-        handler: 'networkFirst'
-      }]
+      runtimeCaching: [
+        {
+          urlPattern: '/',
+          handler: 'networkFirst'
+        }
+      ]
     })
   ]
 })
