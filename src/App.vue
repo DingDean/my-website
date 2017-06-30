@@ -55,6 +55,7 @@ body
 
 .view
   margin 90px auto
+  padding 0 15px
   max-width 800px
 
 #app-top-half
