@@ -51,8 +51,6 @@ export default {
   color #333
   font-family 'Open Sans', Helvetica, sans-serif
   font-weight 300
-  margin 1rem auto 1rem
-  max-width 48rem
   text-align left
   padding 20px
   h1, h2, h3, h4

@@ -52,10 +52,10 @@ body
   -webkit-font-smoothing antialiased
   -moz-osx-font-smoothing grayscale
   color #2c3e50
-  margin-top 60px
 
 .view
-  margin-top 77px
+  margin 90px auto
+  max-width 800px
 
 #app-top-half
   min-height 98vh

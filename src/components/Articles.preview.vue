@@ -31,7 +31,6 @@ export default {
   font-family 'Open Sans', Helvetica, sans-serif
   font-weight 300
   margin 1rem auto 1rem
-  max-width 48rem
   max-height 14rem
   text-align left
   overflow hidden
