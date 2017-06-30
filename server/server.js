@@ -13,7 +13,7 @@ handleMongo(mdb)
 
 app.use(compression())
 app.use(bodyParser.urlencoded({extended: false}))
-aap.use(bodyParser.json())
+app.use(bodyParser.json())
 app.use(require('connect-history-api-fallback')())
 app.use('/static', express.static(path.resolve(__dirname, '../dist/static')))
 app.use('/', express.static(path.resolve(__dirname, '../dist')))
