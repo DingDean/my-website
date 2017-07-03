@@ -100,7 +100,11 @@ var webpackConfig = merge(baseWebpackConfig, {
       runtimeCaching: [
         {
           urlPattern: '/',
-          handler: 'networkFirst'
+          handler: 'cacheFirst'
+        },
+        {
+          urlPattern: '/',
+          handler: 'cacheFirst'
         }
       ]
     })
