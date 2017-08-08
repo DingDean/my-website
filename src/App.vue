@@ -15,6 +15,7 @@
 import MyHeader from './components/Header.vue'
 import MyLegalInfo from './components/legal.footer.vue'
 import MyLoader from './components/loader.vue'
+import MyTweet from './components/Tweet.vue'
 
 export default {
   name: 'app',
@@ -26,7 +27,8 @@ export default {
   components: {
     MyHeader,
     MyLegalInfo,
-    MyLoader
+    MyLoader,
+    MyTweet
   }
 }
 </script>
@@ -48,7 +50,7 @@ body
   background-color lighten(#eceef1, 30%)
 
 #app
-  font-family 'Avenir', Helvetica, Arial, sans-serif
+  font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
   -webkit-font-smoothing antialiased
   -moz-osx-font-smoothing grayscale
   color #2c3e50
@@ -74,4 +76,5 @@ body
 @keyframes fade-out
   0% transform translateY(0)
   100% transform translateY(20px)
+
 </style>
