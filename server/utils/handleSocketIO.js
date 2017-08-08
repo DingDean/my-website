@@ -5,10 +5,13 @@ pull.connect('tcp://localhost:8002')
 module.exports = function (io) {
   pull.on('message', msg => {
     msg = JSON.parse(msg)
+    let content = msg.Tweet;
+    let time = msg.Stamp;
+    let cd = 100 * Number(msg.Cd);
     io.emit('twitter', msg)
     setTimeout(() => {
-      io.emit('burn')
-    }, 8000)
+      io.emit('burn', cd)
+    }, cd * 1000)
   })
 
   io.on('connection', socket => {

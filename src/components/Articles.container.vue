@@ -2,7 +2,7 @@
   <div class="articles-container">
     <my-error-handler v-if='error'></my-error-handler>
     <transition name='el-zoom-in-top'>
-      <my-tweet v-if='tweet' :tweet="tweet"></my-tweet>
+      <my-tweet v-if='tweet' :tweet="tweet.Tweet" :seg="Number(tweet.Cd)"></my-tweet>
     </transition>
     <transition name="slide-fade">
       <section v-if="articles_list">
@@ -36,9 +36,9 @@ export default {
     this.$store.commit('activeLoad')
     this.fetchData()
 
-    this.$options.sockets.twitter = function (content) {
-      console.log(`receive server content: ${content}`)
-      this.tweet = content
+    this.$options.sockets.twitter = function (msg) {
+      console.log('receive server content:', msg)
+      this.tweet = msg
     }
 
     this.$options.sockets.burn = function () {

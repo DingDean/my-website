@@ -1,12 +1,29 @@
 <template>
   <div id='tweet'>
     <p>{{tweet}}</p>
+    <el-progress :percentage="percentage" :show-text="false" :seg="seg"></el-progress>
   </div>
 </template>
 
 <script>
 export default {
-  props: ['tweet']
+  data () {
+    return {
+      percentage: 100
+    }
+  },
+  props: ['tweet', 'seg'],
+  methods: {
+    cd () {
+      if (this.percentage > 0) {
+        this.percentage --
+        setTimeout(this.cd, this.seg * 1000)
+      }
+    }
+  },
+  created () {
+    this.cd()
+  }
 }
 </script>
 

@@ -6,13 +6,14 @@ import router from './router'
 import VueResource from 'vue-resource'
 import store from './store'
 import VueSocket from 'vue-socket.io'
-import { Button } from 'element-ui'
+import { Button, Progress } from 'element-ui'
 import 'element-ui/lib/theme-default/base.css'
 
 Vue.config.productionTip = true
 Vue.use(VueResource)
 Vue.use(VueSocket, 'localhost:3000')
 Vue.use(Button)
+Vue.use(Progress)
 
 /* eslint-disable no-new */
 new Vue({
