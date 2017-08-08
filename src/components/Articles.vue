@@ -49,7 +49,6 @@ export default {
 <style lang="stylus">
 .my-article
   color #333
-  font-family 'Open Sans', Helvetica, sans-serif
   font-weight 300
   text-align left
   padding 20px

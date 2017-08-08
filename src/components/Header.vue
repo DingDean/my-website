@@ -35,19 +35,20 @@ a
   text-decoration none
 
 .header
-  background-color #689F38
+  background-color #1D8CE0
   position fixed
   left 0
   right 0
   top 0
   height 60px
+  box-shadow 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)
   .inner
     max-width 800px
     box-sizing border-box
     margin 0 auto
     padding 15px 5px
   a
-    color rgba(255,255,255,.8)
+    color #324057
     line-height 24px
     transition color .15s ease
     display inline-block
@@ -55,14 +56,14 @@ a
     font-weight 300
     margin-right 1.8em
     &:hover
-      color $fff
+      color #D3DCE6
     &.router-link-active
       color #fff
       font-weight 400
     &:nth-child(3)
       margin-right 0
   .github
-    color #fff
+    color #324057
     font-size .9em
     margin 0
     padding 5px 0

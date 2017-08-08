@@ -5,9 +5,15 @@ import App from './App'
 import router from './router'
 import VueResource from 'vue-resource'
 import store from './store'
+import VueSocket from 'vue-socket.io'
+import { Button, Progress } from 'element-ui'
+import 'element-ui/lib/theme-default/base.css'
 
 Vue.config.productionTip = true
 Vue.use(VueResource)
+Vue.use(VueSocket, 'localhost:3000')
+Vue.use(Button)
+Vue.use(Progress)
 
 /* eslint-disable no-new */
 new Vue({
@@ -15,5 +21,10 @@ new Vue({
   router,
   store,
   template: '<App/>',
-  components: { App }
+  components: { App },
+  sockets: {
+    connect () {
+      console.log('Connected to server')
+    }
+  }
 })

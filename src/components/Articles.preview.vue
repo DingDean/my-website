@@ -27,8 +27,7 @@ export default {
   border-radius 2px
   color #444
   padding 0 5px
-  background #fff
-  font-family 'Open Sans', Helvetica, sans-serif
+  background #F9FAFC
   font-weight 300
   margin 1rem auto 1rem
   max-height 14rem

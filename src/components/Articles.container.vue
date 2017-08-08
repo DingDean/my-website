@@ -1,6 +1,9 @@
 <template>
   <div class="articles-container">
     <my-error-handler v-if='error'></my-error-handler>
+    <transition name='el-zoom-in-top'>
+      <my-tweet v-if='tweet' :tweet="tweet.Tweet" :seg="Number(tweet.Cd)"></my-tweet>
+    </transition>
     <transition name="slide-fade">
       <section v-if="articles_list">
         <my-article-preview
@@ -18,22 +21,35 @@
 <script>
 import MyArticlePreview from './Articles.preview.vue'
 import MyErrorHandler from './Error.vue'
+import MyTweet from './Tweet.vue'
 
 export default {
   name: 'article',
   data () {
     return {
       articles_list: null,
-      error: null
+      error: null,
+      tweet: null
     }
   },
   created () {
     this.$store.commit('activeLoad')
     this.fetchData()
+
+    this.$options.sockets.twitter = function (msg) {
+      console.log('receive server content:', msg)
+      this.tweet = msg
+    }
+
+    this.$options.sockets.burn = function () {
+      console.log(`burning twitter`)
+      this.tweet = null
+    }
   },
   components: {
     MyArticlePreview,
-    MyErrorHandler
+    MyErrorHandler,
+    MyTweet
   },
   methods: {
     fetchData () {
