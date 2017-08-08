@@ -10,8 +10,10 @@ mongoose.connect('mongodb://localhost/test')
 const mdb = mongoose.connection
 const http = require('http').Server(app)
 const io = require('socket.io')(http)
+const handleSocket = require('./utils/handleSocketIO.js')
 
 handleMongo(mdb)
+handleSocket(io)
 
 app.use(compression())
 app.use(bodyParser.urlencoded({extended: false}))
@@ -25,23 +27,6 @@ app.get('/', function (req, res) {
 });
 
 routes.forEach(route => app.use(route.path, require(route.module)))
-
-io.on('connection', socket => {
-  console.log('A user connected')
-  socket.on('disconnect', () => {
-    console.log('A user disconnected')
-  });
-  socket.on('shout', data => {
-    console.log('Client says ', data)
-  })
-})
-
-setInterval( () => {
-    io.emit('twitter', 'it is awesome');
-    setTimeout(()=> {
-      io.emit('burn')
-    }, 3000);
-}, 5000);
 
 http.listen(3000, function () {
   console.log('服务器准备完毕,等待连接请求...')
