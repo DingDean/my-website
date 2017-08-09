@@ -17,7 +17,11 @@ handleMongo(db)
 const http = require('http').Server(app)
 const io = require('socket.io')(http)
 const handleSocket = require('./utils/handleSocketIO.js')
-handleSocket(io)
+const ioAPI = handleSocket(io)
+
+// Attach socketio and db to Zeromq Backdoor
+const handleZmq = require('./utils/handleZero.js')
+handleZmq(ioAPI, db)
 
 app.use(compression())
 app.use(bodyParser.urlencoded({extended: false}))

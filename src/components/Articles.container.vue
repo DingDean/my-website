@@ -38,12 +38,12 @@ export default {
     this.fetchData()
 
     this.$options.sockets.twitter = function (msg) {
-      console.log('receive server content:', msg)
-      this.tweet = msg
+      if (!this.tweet) {
+        this.tweet = msg
+      }
     }
 
     this.$options.sockets.burn = function () {
-      console.log(`burning twitter`)
       this.tweet = null
     }
   },
