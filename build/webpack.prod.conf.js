@@ -101,10 +101,6 @@ var webpackConfig = merge(baseWebpackConfig, {
         {
           urlPattern: '/',
           handler: 'cacheFirst'
-        },
-        {
-          urlPattern: '/articles',
-          handler: 'cacheFirst'
         }
       ]
     })
