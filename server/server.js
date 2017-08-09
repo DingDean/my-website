@@ -6,13 +6,17 @@ const fs = require('fs')
 const routes = require('./routes/routes.config.js')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
-mongoose.connect('mongodb://localhost/test')
-const mdb = mongoose.connection
+
+// Mongodb Connection
+mongoose.connect('mongodb://localhost/test', {useMongoClient: true})
+const db = mongoose.connection
+const handleMongo = require('./utils/handleMongo.js')
+handleMongo(db)
+
+// SocketIO connection
 const http = require('http').Server(app)
 const io = require('socket.io')(http)
 const handleSocket = require('./utils/handleSocketIO.js')
-
-handleMongo(mdb)
 handleSocket(io)
 
 app.use(compression())
@@ -25,20 +29,8 @@ app.use('/', express.static(path.resolve(__dirname, '../dist')))
 app.get('/', function (req, res) {
   res.sendFile(path.resolve(__dirname, '../dist/index.html'))
 });
-
 routes.forEach(route => app.use(route.path, require(route.module)))
 
 http.listen(3000, function () {
   console.log('服务器准备完毕,等待连接请求...')
 });
-
-function handleMongo (db) {
-  db.on('error', (err) => {
-    console.log('数据库连接失败', err)
-  })
-
-  db.once('open', () => {
-    console.log('数据库连接正常')
-  })
-}
-

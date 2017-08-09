@@ -11,6 +11,7 @@
           :title="ele.title"
           :summary="ele.summary"
           :articleId="ele.ref"
+          :time="ele.time"
           :key="ele.id"
         ></my-article-preview>
       </section>

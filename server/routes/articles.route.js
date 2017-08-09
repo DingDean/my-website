@@ -40,6 +40,7 @@ function genPreviewList (docs) {
       title: ele.title,
       summary: ele.summary,
       ref: ele.ref,
+      time: ele.createTime,
       id: ele.createTime + ele.lastModified
     }
   })

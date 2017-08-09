@@ -1,7 +1,8 @@
 <template>
   <div @click="jump" class="article-preview-tab">
-    <h1>{{title}}</h1>
-    <p>{{summary}}</p>
+    <span class="title">{{title}}</span>
+    <span class="time">{{stamp}}</span>
+    <span class="summary">{{summary}}</span>
   </div>
 </template>
 
@@ -12,10 +13,18 @@ export default {
     return {
     }
   },
-  props: ['title', 'summary', 'articleId'],
+  props: ['title', 'summary', 'articleId', 'time'],
+  computed: {
+    stamp () {
+      return new Date(this.time).toLocaleDateString()
+    }
+  },
   methods: {
     jump () {
       this.$router.push(`/articles/${this.articleId}`)
+    },
+    genStamp (unix) {
+      return new Date(unix).toString()
     }
   }
 
@@ -26,7 +35,7 @@ export default {
 .article-preview-tab
   border-radius 2px
   color #444
-  padding 0 5px
+  padding 0 20px
   background #F9FAFC
   font-weight 300
   margin 1rem auto 1rem
@@ -38,4 +47,11 @@ export default {
   &:hover
     box-shadow 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22)
     cursor pointer
+  .time
+    float right
+  .title
+    font-size 1.618em
+  .summary
+    display block
+    font-size 1em
 </style>
