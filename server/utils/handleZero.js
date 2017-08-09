@@ -3,7 +3,7 @@ const zmq = require('zeromq')
 const pull = zmq.socket('pull')
 pull.connect('tcp://localhost:8002')
 
-module.exports = function (io, db) {
+module.exports = function (io) {
   pull.on('message', msg => {
     io.b_tweets(msg)
     save(msg, err => {

@@ -9,8 +9,8 @@ var API = function (io) {
 
   this.b_tweets = function (tweet) {
     _crtTweet = JSON.parse(tweet)
-    //let content = _crtTweet.Tweet;
-    //let time = _crtTweet.Stamp;
+    let content = _crtTweet.Tweet;
+    let time = _crtTweet.Stamp;
     let cd = 100 * Number(_crtTweet.Cd);
     io.emit('twitter', _crtTweet)
     setTimeout(() => {

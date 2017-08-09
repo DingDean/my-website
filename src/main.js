@@ -11,7 +11,7 @@ import 'element-ui/lib/theme-default/base.css'
 
 Vue.config.productionTip = true
 Vue.use(VueResource)
-Vue.use(VueSocket, 'https://dingkewz.com')
+Vue.use(VueSocket, 'localhost:3000')
 Vue.use(Button)
 Vue.use(Progress)
 

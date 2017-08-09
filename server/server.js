@@ -21,7 +21,7 @@ const ioAPI = handleSocket(io)
 
 // Attach socketio and db to Zeromq Backdoor
 const handleZmq = require('./utils/handleZero.js')
-handleZmq(ioAPI, db)
+handleZmq(ioAPI)
 
 app.use(compression())
 app.use(bodyParser.urlencoded({extended: false}))
