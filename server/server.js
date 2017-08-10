@@ -6,9 +6,10 @@ const fs = require('fs')
 const routes = require('./routes/routes.config.js')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
+require('dotenv').config()
 
 // Mongodb Connection
-mongoose.connect('mongodb://tester:1111@localhost/test', {userMongoClient: true})
+mongoose.connect(process.env.DB_LOC, {userMongoClient: true})
 const db = mongoose.connection
 const handleMongo = require('./utils/handleMongo.js')
 handleMongo(db)
@@ -35,6 +36,6 @@ app.get('/', function (req, res) {
 });
 routes.forEach(route => app.use(route.path, require(route.module)))
 
-http.listen(3000, function () {
+http.listen(process.env.PORT || 3000, function () {
   console.log('服务器准备完毕,等待连接请求...')
 });
