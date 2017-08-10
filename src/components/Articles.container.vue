@@ -34,10 +34,12 @@ export default {
     }
   },
   created () {
+    this.$socket.emit('sync')
     this.$store.commit('activeLoad')
     this.fetchData()
 
     this.$options.sockets.twitter = function (msg) {
+      console.log('receive new tweet')
       if (!this.tweet) {
         this.tweet = msg
       }

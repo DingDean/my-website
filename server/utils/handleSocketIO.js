@@ -19,10 +19,10 @@ var API = function (io) {
     }, cd * 1000)
   }
 
-  this.sync_tweet = function () {
+  this.sync_tweet = function (socket) {
     if (!_crtTweet)
       return;
-    io.emit('twitter', _crtTweet)
+    socket.emit('twitter', _crtTweet)
   }
 }
 
@@ -30,7 +30,10 @@ module.exports = function (io) {
   let api = new API(io)
   io.on('connection', socket => {
     console.log('A user connected')
-    api.sync_tweet()
+    socket.on('sync', () => {
+      console.log('user request syncronization');
+      api.sync_tweet(socket)
+    })
     socket.on('disconnect', () => {
       console.log('A user disconnected')
     })
