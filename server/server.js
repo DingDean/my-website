@@ -8,7 +8,7 @@ const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
 
 // Mongodb Connection
-mongoose.connect('mongodb://localhost/test', {useMongoClient: true})
+mongoose.connect('mongodb://tester:1111@localhost/test', {userMongoClient: true})
 const db = mongoose.connection
 const handleMongo = require('./utils/handleMongo.js')
 handleMongo(db)

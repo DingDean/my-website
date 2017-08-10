@@ -15,7 +15,7 @@ var webpackConfig = process.env.NODE_ENV === 'testing'
   : require('./webpack.dev.conf')
 var fs = require('fs')
 var mongoose = require('mongoose')
-mongoose.connect('mongodb://localhost/test')
+mongoose.connect('mongodb://tester:1111@localhost/test')
 
 const routes = require('../server/routes/routes.config.js');
 

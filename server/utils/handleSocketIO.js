@@ -7,6 +7,18 @@ var API = function (io) {
   var _crtTweet = null;
   var self = this;
 
+  io.on('connection', socket => {
+    console.log('A user connected')
+    socket.on('sync', () => {
+      console.log('user request syncronization');
+      //api.sync_tweet(socket)
+      socket.emit('sync_back', 'you are synced')
+    })
+    socket.on('disconnect', () => {
+      console.log('A user disconnected')
+    })
+  })
+
   this.b_tweets = function (tweet) {
     _crtTweet = JSON.parse(tweet)
     let content = _crtTweet.Tweet;
@@ -27,16 +39,5 @@ var API = function (io) {
 }
 
 module.exports = function (io) {
-  let api = new API(io)
-  io.on('connection', socket => {
-    console.log('A user connected')
-    socket.on('sync', () => {
-      console.log('user request syncronization');
-      api.sync_tweet(socket)
-    })
-    socket.on('disconnect', () => {
-      console.log('A user disconnected')
-    })
-  })
-  return api;
+  return new API(io)
 }

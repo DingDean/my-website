@@ -34,7 +34,6 @@ export default {
     }
   },
   created () {
-    this.$socket.emit('sync')
     this.$store.commit('activeLoad')
     this.fetchData()
 
@@ -45,9 +44,14 @@ export default {
       }
     }
 
+    this.$options.sockets.sync_back = function (msg) {
+      console.log('synced back')
+    }
+
     this.$options.sockets.burn = function () {
       this.tweet = null
     }
+    this.$socket.emit('sync')
   },
   components: {
     MyArticlePreview,

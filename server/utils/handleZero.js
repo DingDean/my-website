@@ -14,6 +14,7 @@ module.exports = function (io) {
 }
 
 function save (msg, cb) {
+  msg = JSON.parse(msg)
   let t = new db({
     content: msg.Tweet,
     createTime: Date.now()
