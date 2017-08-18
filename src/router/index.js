@@ -4,7 +4,7 @@ import Router from 'vue-router'
 // import MyArticle from '@/components/Articles'
 // import MyAbout from '@/components/About'
 const MyArticles = () => import('@/components/Articles.container')
-const MyArticle = () => import('@/components/Aritcles')
+const MyArticle = () => import('@/components/Articles')
 const MyAbout = () => import('@/components/About')
 
 Vue.use(Router)
