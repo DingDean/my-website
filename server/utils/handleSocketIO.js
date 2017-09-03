@@ -8,14 +8,10 @@ var API = function (io) {
   var self = this;
 
   io.on('connection', socket => {
-    console.log('A user connected')
     socket.on('sync', () => {
-      console.log('user request syncronization');
       //api.sync_tweet(socket)
-      socket.emit('sync_back', 'you are synced')
     })
     socket.on('disconnect', () => {
-      console.log('A user disconnected')
     })
   })
 
