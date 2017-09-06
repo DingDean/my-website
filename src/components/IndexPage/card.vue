@@ -5,9 +5,9 @@
         <span class="title">编程语言使用分布</span>
         <icon class="icon" name="code" scale="2"></icon>
       </div>
-      <div class="content">
+      <slot>
         <p> JavaScript </p>
-      </div>
+      </slot>
     </el-card>
   </div>
 </template>
