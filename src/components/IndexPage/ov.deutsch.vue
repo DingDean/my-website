@@ -1,5 +1,5 @@
 <template>
-  <el-card>
+  <ovtemplate>
       <div slot="header">
         <span class="i-ov-title"> 每日德语 </span>
         <icon class="i-ov-icon" name="language" scale="2"></icon>
@@ -8,7 +8,7 @@
         <h2>今日单词</h2>
         <p>单词之解释</p>
       </div>
-  </el-card>
+  </ovtemplate>
 </template>
 
 <script>

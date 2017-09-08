@@ -10,13 +10,17 @@ import 'vue-awesome/icons/book'
 import 'vue-awesome/icons/headphones'
 import 'vue-awesome/icons/language'
 import 'vue-awesome/icons/rss'
+import 'vue-awesome/icons/github'
+import 'vue-awesome/icons/weixin'
 import Icon from 'vue-awesome/components/Icon'
 import { Button, Card, Progress } from 'element-ui'
 import 'element-ui/lib/theme-default/index.css'
+import OvTemplate from './components/IndexPage/ov.template'
 
 Vue.config.productionTip = true
 Vue.use(VueResource)
 Vue.component('icon', Icon)
+Vue.component('ovtemplate', OvTemplate)
 Vue.use(Button)
 Vue.use(Card)
 Vue.use(Progress)

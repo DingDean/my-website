@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import MyIndex from '@/components/IndexPage/shell'
+import MyIndex from '@/components/IndexPage/main'
 // import MyArticles from '@/components/Articles.container'
 // import MyArticle from '@/components/Articles'
 // import MyAbout from '@/components/About'

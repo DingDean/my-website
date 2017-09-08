@@ -1,5 +1,5 @@
 <template>
-  <el-card>
+  <ovtemplate>
       <div slot="header">
         <span class="i-ov-title"> 编程概况 </span>
         <icon class="i-ov-icon" name="code" scale="2"></icon>
@@ -7,7 +7,7 @@
       <div class="gh-view">
         <p>JavaScript</p>
       </div>
-  </el-card>
+  </ovtemplate>
 </template>
 
 <script>

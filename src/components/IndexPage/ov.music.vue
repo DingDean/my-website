@@ -1,5 +1,5 @@
 <template>
-  <el-card>
+  <ovtemplate>
       <div slot="header">
         <span class="i-ov-title"> 最近听歌排行 </span>
         <icon class="i-ov-icon" name="headphones" scale="2"></icon>
@@ -11,7 +11,7 @@
           </li>
         </ul>
       </div>
-  </el-card>
+  </ovtemplate>
 </template>
 
 <script>

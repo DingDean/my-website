@@ -1,6 +1,9 @@
 <template>
   <div id="app">
-    <main>
+    <nav-burger></nav-burger>
+    <navigator>
+    </navigator>
+    <main id="my-main">
       <router-view>
         This is the first level router view
       </router-view>
@@ -9,21 +12,25 @@
 </template>
 
 <script>
+import Navigator from './components/sideNavigator/main'
+import NavBurger from './components/burger'
 export default {
+  components: {
+    Navigator,
+    NavBurger
+  }
 }
 </script>
 
 <style lang="stylus">
-html, body, h1, h2, h3, h4, h5, h6, p, ul
-  padding 0
-  margin 0
-ul
-  list-style-type none
-a
-  text-decoration none
 #app
   font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
   -webkit-font-smoothing antialiased
   -moz-osx-font-smoothing grayscale
-  padding 5px 24px
+#my-main
+  transition margin-left .3s ease
+  margin-left side-menu-width
+  @media (max-width: 1024px)
+    margin-left 0
+
 </style>
