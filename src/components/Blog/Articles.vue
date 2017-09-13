@@ -31,7 +31,6 @@ export default {
   methods: {
     fetchData () {
       this.$http.get(`/api/blog/articles/${this.articleId}`).then(res => {
-        console.log(res.body)
         if (res.status === 200) {
           this.article = res.body
         } else {
