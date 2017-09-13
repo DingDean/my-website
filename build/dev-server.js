@@ -14,6 +14,9 @@ var webpackConfig = process.env.NODE_ENV === 'testing'
   ? require('./webpack.prod.conf')
   : require('./webpack.dev.conf')
 var fs = require('fs')
+require('dotenv').config()
+var mongoose = require('mongoose')
+mongoose.connect(process.env.DB_LOC, {userMongoClient: true})
 // default port where dev server listens for incoming traffic
 var port = process.env.PORT || config.dev.port
 // automatically open browser, if not set will be false
@@ -63,6 +66,9 @@ app.use(hotMiddleware)
 // serve pure static assets
 var staticPath = path.posix.join(config.dev.assetsPublicPath, config.dev.assetsSubDirectory)
 app.use(staticPath, express.static('./static'))
+
+const routes = require('../server/routes/routes.config.js');
+routes.forEach(route => app.use(route.path, require(route.module)))
 
 var uri = 'http://localhost:' + port
 

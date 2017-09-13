@@ -5,8 +5,9 @@
     <h3 id="nav-banner-subtitle"> 全栈工程师 </h3>
     <p id="nav-banner-summary"> 嘿，歌者，欢迎来到我的这片水塘 </p>
     <ul id="site-menu">
-      <li><a href="#"> 首页 </a></li>
-      <li><a href="#"> 简历 </a></li>
+      <li><router-link to="/"> 首页 </router-link></li>
+      <li><router-link to="/blog"> 博客 </router-link></li>
+      <li><router-link to="#"> 简历 </router-link></li>
     </ul>
     <ul id="social-links">
       <li><a rel="noopener" href="https://github.com/DingDean" target="_blank"><icon name="github" scale="3"></icon></a></li>
@@ -20,6 +21,9 @@
   #site-menu, #social-links
     display flex
     justify-content center
+    a
+      &.router-link-exact-active
+        color #fff
   @media (min-width: 1025px)
     text-align center
     *

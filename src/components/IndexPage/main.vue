@@ -2,24 +2,22 @@
   <div class="ov-container">
     <post></post>
     <douban></douban>
-    <musics></musics>
-    <german></german>
   </div>
 </template>
 
 <script>
 import Douban from './ov.douban'
 // import Github from './ov.github'
-import Musics from './ov.music'
-import German from './ov.deutsch'
+// import Musics from './ov.music'
+// import German from './ov.deutsch'
 import Post from './ov.post'
 
 export default {
   components: {
     Douban,
     // Github,
-    Musics,
-    German,
+    // Musics,
+    // German,
     Post
   }
 }

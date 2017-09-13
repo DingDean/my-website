@@ -8,8 +8,8 @@
         <span class="ov-post-title">{{overview.title}}</span>
         <span class="ov-post-time">{{stamp}}</span>
         <span class="ov-post-summary">{{overview.summary}}</span>
-        <el-button type="text" size="large"> <a rel="noopener" :href="overview.link" target="__blank">阅读文章</a> </el-button>
-        <el-button type="text" size="large"> <a rel="noopener" href="https://dingkewz.com" target="__blank">前往博客</a> </el-button>
+        <el-button type="text" size="large"> <router-link :to="overview.link">阅读文章</router-link> </el-button>
+        <el-button type="text" size="large"> <router-link to="/blog">更多文章</router-link> </el-button>
       </div>
   </ovtemplate>
 </template>
@@ -42,16 +42,27 @@ export default {
     }
   },
   mounted () {
-    setTimeout(this.fetchData, 2000)
+    this.fetchData()
   },
   methods: {
     fetchData () {
-      this.overview = {
-        title: '弹星者和二向箔',
-        time: Date.now(),
-        summary: '嘿，歌者，你好，欢迎来到我的这片水塘',
-        link: 'https://dingkewz.com/articles/welcome'
-      }
+      this.$http.get('/api/blog/recentpost').then(res => {
+        let data = res.body.post
+        console.log(data)
+        this.overview = {
+          title: data.title,
+          time: data.mtime,
+          summary: data.summary,
+          link: `/blog/${data.inode}`
+        }
+      }, res => {
+        this.overview = {
+          title: 'temp',
+          time: 0,
+          summary: 'temp',
+          link: `/blog/`
+        }
+      })
     }
   }
 }
