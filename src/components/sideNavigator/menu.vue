@@ -1,13 +1,13 @@
 <template>
   <div class="nav-banner">
-    <img id="nav-banner-logo" src="http://via.placeholder.com/100x100" alt="my-picture"/>
+    <img id="nav-banner-logo" src="../../assets/web_logo.png" style="width: 100px; height: 100px" alt="my-picture"/>
     <h2 id="nav-banner-title" style="font-size 19pt">丁科 / 二向箔</h2>
     <h3 id="nav-banner-subtitle"> 全栈工程师 </h3>
     <p id="nav-banner-summary"> 嘿，歌者，欢迎来到我的这片水塘 </p>
     <ul id="site-menu">
       <li><router-link to="/"> 首页 </router-link></li>
       <li><router-link to="/blog"> 博客 </router-link></li>
-      <li><router-link to="#"> 简历 </router-link></li>
+      <li><router-link to="/about"> 关于我 </router-link></li>
     </ul>
     <ul id="social-links">
       <li><a rel="noopener" href="https://github.com/DingDean" target="_blank"><icon name="github" scale="3"></icon></a></li>

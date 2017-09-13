@@ -38,7 +38,17 @@
 export default {}
 </script>
 
-<style lang="stylus">
+<style scoped lang="stylus">
+.about
+  max-width 600px
+  margin 0 auto
+  padding 20px
+  @media(max-width: 1024px)
+    p
+      line-height 30px
+  @media(min-width: 1025px)
+    p
+      line-height 50px
 a
   text-decoration none
 .place
