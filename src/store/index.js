@@ -5,14 +5,11 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    loading: true
+    showMenu: false
   },
   mutations: {
-    activeLoad (state) {
-      state.loading = true
-    },
-    deactiveLoad (state) {
-      state.loading = false
+    toggleMenu (state) {
+      state.showMenu = !state.showMenu
     }
   }
 })
