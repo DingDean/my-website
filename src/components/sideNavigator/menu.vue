@@ -2,7 +2,7 @@
   <div class="nav-banner">
     <img id="nav-banner-logo" src="../../assets/web_logo.png" style="width: 100px; height: 100px" alt="my-picture"/>
     <h2 id="nav-banner-title" style="font-size 19pt">丁科 / 二向箔</h2>
-    <h3 id="nav-banner-subtitle"> 全栈工程师 </h3>
+    <h3 id="nav-banner-subtitle"> 后端工程师 </h3>
     <p id="nav-banner-summary"> 嘿，歌者，欢迎来到我的这片水塘 </p>
     <ul id="site-menu">
       <li><router-link to="/"> 首页 </router-link></li>
