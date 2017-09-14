@@ -24,6 +24,9 @@ const ioAPI = handleSocket(io)
 const handleZmq = require('./utils/handleZero.js')
 handleZmq(ioAPI)
 
+// Listen to backdoor controller
+const handleController = require('./utils/handleTcp.js')
+
 app.use(compression())
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json())
