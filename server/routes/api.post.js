@@ -11,14 +11,30 @@ var newArticleSchema = mongoose.Schema({
     inode:    { type: Number, unique: true, required: true }
 });
 var newArticles = mongoose.model('articles', newArticleSchema)
+const emitter = require('../utils/emitter.js')
 
 var _cache = {}
+
+emitter.on('refresh', () => {
+  console.log('refreshing cache')
+  _cache = {}
+  getArticles((err, docs) => {
+    if (err)
+      throw(err)
+    _cache.articles = {list: docs}
+  })
+  getRecentPost((err, doc) => {
+    if (err)
+      throw(err)
+    _cache.recentpost = {post: doc[0]}
+  })
+})
 
 router.get('/articles', (req, res) => {
   if (_cache.articles) {
     res.status(200).send(_cache.articles)
   } else {
-    newArticles.find({}).sort({ctime: -1}).exec((err, docs) => {
+    getArticles((err, docs) => {
       if (err)
         res.status(404).end()
       else
@@ -34,7 +50,7 @@ router.get('/articles/:articleId', (req, res) => {
   if (_cache[id]) {
     res.status(200).send(_cache[id])
   } else {
-    newArticles.findOne({inode: Number(id)}, (err, doc) => {
+    getArticle(id, (err, doc) => {
       if (err)
         res.status(404).end()
       else
@@ -43,13 +59,31 @@ router.get('/articles/:articleId', (req, res) => {
         res.status(200).send(_cache[id])
       }
     })
+
   }
 })
 router.get('/recentpost', (req, res) => {
-  newArticles.find({}).sort({ctime: -1}).limit(1).exec((err, file) => {
-    res.send({post: file[0]})
-  })
+  if (_cache.recentpost) {
+    res.status(200).send(_cache.recentpost)
+  } else {
+    getRecentPost((err, file) => {
+      _cache.recentpost = {post: file[0]}
+      res.send(_cache.recentpost)
+    })
+  }
 })
+
+function getArticles (cb) {
+  newArticles.find({}).sort({ctime: -1}).exec(cb)
+}
+
+function getArticle (id, cb) {
+  newArticles.findOne({inode: Number(id)}, cb)
+}
+
+function getRecentPost (cb) {
+  newArticles.find({}).sort({ctime: -1}).limit(1).exec(cb)
+}
 
 
 module.exports = router
