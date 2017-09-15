@@ -1,12 +1,11 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import MyIndex from '@/components/IndexPage/main'
-// import MyArticles from '@/components/Blog/Articles.container'
-// import MyArticle from '@/components/Blog/Articles'
+// import MyIndex from '@/views/Index'
 
-const MyArticles = () => import('@/components/Blog/Articles.container')
-const MyArticle = () => import('@/components/Blog/Articles')
-const MyAbout = () => import('@/components/About')
+const MyIndex = () => import('@/views/Index')
+const MyArticles = () => import('@/views/Articles')
+const MyArticle = () => import('@/views/Article')
+const MyAbout = () => import('@/views/About')
 
 Vue.use(Router)
 

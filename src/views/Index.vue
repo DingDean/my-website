@@ -6,11 +6,11 @@
 </template>
 
 <script>
-import Douban from './ov.douban'
+import Douban from '../components/IndexPage/ov.douban'
 // import Github from './ov.github'
 // import Musics from './ov.music'
 // import German from './ov.deutsch'
-import Post from './ov.post'
+import Post from '../components/IndexPage/ov.post'
 
 export default {
   components: {
