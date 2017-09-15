@@ -48,7 +48,6 @@ export default {
     fetchData () {
       this.$http.get('/api/blog/recentpost').then(res => {
         let data = res.body.post
-        console.log(data)
         this.overview = {
           title: data.title,
           time: data.mtime,

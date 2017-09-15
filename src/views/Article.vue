@@ -14,7 +14,7 @@
 
 <script>
 import marked from 'marked'
-import MyErrorHandler from './Error.vue'
+import MyErrorHandler from '../components/Blog/Error.vue'
 
 export default {
   name: 'my-article',
@@ -60,6 +60,8 @@ export default {
   padding 20px
   max-width 600px
   margin 0 auto
+  p
+    padding 10px 0
   h1, h2, h3, h4
     margin 1.414rem 0 .5rem
     font-weight inherit
@@ -107,14 +109,4 @@ export default {
     color #777
   ul, ol, li
     text-align left
-
-.slide-fade-enter-active
-  transition all .3s ease
-
-.slide-fade-leave-active
-  transition all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0)
-
-.slide-fade-enter, .slide-fade-leave-to
-  opacity 0
-  transform translateY(10px)
 </style>

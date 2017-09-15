@@ -17,8 +17,8 @@
 </template>
 
 <script>
-import MyArticlePreview from './Articles.preview.vue'
-import MyErrorHandler from './Error.vue'
+import MyArticlePreview from '../components/Blog/Articles.preview.vue'
+import MyErrorHandler from '../components/Blog/Error.vue'
 
 export default {
   name: 'article',
