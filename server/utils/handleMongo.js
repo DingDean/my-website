@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-mongoose.connect(process.env.DB_LOC)
+mongoose.connect(process.env.DB_LOC, {useMongoClient: true})
 const db = mongoose.connection
 mongoose.Promise = global.Promise
 db.on('error', err => console.log(err))
