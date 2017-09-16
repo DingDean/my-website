@@ -11,11 +11,12 @@ var newArticleSchema = mongoose.Schema({
     inode:    { type: Number, unique: true, required: true }
 });
 var newArticles = mongoose.model('articles', newArticleSchema)
-const emitter = require('../utils/emitter.js')
+const emitter = require('../utils/handleTcp.js').emitter
+const events = require('../utils/handleTcp.js').events
 
 var _cache = {}
 
-emitter.on('refresh', () => {
+emitter.on(events.RPOST, () => {
   console.log('refreshing cache')
   _cache = {}
   getArticles((err, docs) => {

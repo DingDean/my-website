@@ -3,6 +3,7 @@ const router = express.Router()
 const fs = require('fs');
 const path = require('path')
 const scrapeIt = require('scrape-it')
+const { emitter, events } = require('../utils/handleTcp.js')
 
 var _localState = {};
 
@@ -18,6 +19,11 @@ var _localState = {};
     }, 24 * 60 * 60 * 1000)
   }, getSecondsTillMidnight())
 })()
+
+emitter.on(events.RDOUBAN, data => {
+  getMyReadingList(list => {_localState = list})
+  console.log('douban reading list is refreshed')
+})
 
 function getSecondsTillMidnight () {
   let date = new Date();
@@ -47,7 +53,6 @@ function getMyReadingList (cb) {
     }
   }).then(page => {
     console.log('Douban booklist is scraped')
-    console.log(page)
     cb(page)
   }).catch(err => {
     console.log(err)
