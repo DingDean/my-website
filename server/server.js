@@ -4,15 +4,11 @@ const app = express()
 const path = require('path')
 const fs = require('fs')
 const routes = require('./routes/routes.config.js')
-const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
 require('dotenv').config()
 
 // Mongodb Connection
-mongoose.connect(process.env.DB_LOC, {userMongoClient: true})
-const db = mongoose.connection
-const handleMongo = require('./utils/handleMongo.js')
-handleMongo(db)
+const mongodb = require('./utils/handleMongo.js')
 
 // SocketIO connection
 const http = require('http').Server(app)
@@ -21,8 +17,8 @@ const handleSocket = require('./utils/handleSocketIO.js')
 const ioAPI = handleSocket(io)
 
 // Attach socketio and db to Zeromq Backdoor
-const handleZmq = require('./utils/handleZero.js')
-handleZmq(ioAPI)
+// const handleZmq = require('./utils/handleZero.js')
+// handleZmq(ioAPI)
 
 // Listen to backdoor controller
 const handleController = require('./utils/handleTcp.js')
