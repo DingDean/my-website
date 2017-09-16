@@ -50,7 +50,7 @@ export default {
         let data = res.body.post
         this.overview = {
           title: data.title,
-          time: data.mtime,
+          time: data.ctime,
           summary: data.summary,
           link: `/blog/${data.inode}`
         }
