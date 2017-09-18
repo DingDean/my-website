@@ -22,7 +22,7 @@ server.on('error', err => {
   throw(err)
 })
 
-server.listen(process.env.CONTROL_PORT, () => {
+server.listen(process.env.CONTROL_PORT, process.env.CONTROL_HOST, () => {
   console.log("Controller server ready on port", process.env.CONTROL_PORT)
 })
 
