@@ -7,6 +7,7 @@
     <div>
       <book-list v-for="book in booklist" :key="book" :book="book">
       </book-list>
+      <a href="https://www.douban.com/people/deanacroic/" rel="noopener" target="_blank">我的豆瓣</a>
     </div>
   </ovtemplate>
 </template>
