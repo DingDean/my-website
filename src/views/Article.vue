@@ -3,7 +3,7 @@
     <my-error-handler v-if='error'></my-error-handler>
     <transition name="slide-fade">
       <div v-if="article">
-        <div class="my-article">
+        <div class="markdown-body">
           <h1> {{article.title}} </h1>
           <div v-html="mdHtml"></div>
         </div>
@@ -53,60 +53,14 @@ export default {
 </script>
 
 <style lang="stylus">
-.my-article
-  color #333
-  font-weight 300
-  text-align left
-  padding 20px
-  max-width 600px
+@import "../../node_modules/github-markdown-css/github-markdown.css"
+.markdown-body
+  box-sizing border-box
+  min-width 200px
+  max-width 980px
   margin 0 auto
-  p
-    padding 10px 0
-  h1, h2, h3, h4
-    margin 1.414rem 0 .5rem
-    font-weight inherit
-    line-height 1.42
-  h1
-    margin-top 0
-    font-size 3.998rem
-  h2
-    font-size 2.827rem
-  h3
-    font-size 1.999rem
-  h4
-    font-size 1.414rem
-  h5
-    font-size 1.121rem
-  h6
-    font-size .88rem
-  h7
-    font-size .707rem
-  img, canvas, iframe, video, svg, select, textarea
-    max-width 100%
-  img
-    border-radius 50%
-    height 200px
-    width 200px
-    margin 0 auto
-  a
-    color #3498db
-    &:visited
-      color #3498db
-    &:hover
-    &:focus
-    &:active
-      color #2980b9
-  pre
-    background-color #fafafa
-    padding 1rem
-    text-align left
-  blockquote
-    margin 0
-    border-left 4px solid #ddd
-    font-style italic
-    padding 0 15px
-    text-align left
-    color #777
-  ul, ol, li
-    text-align left
+  padding 45px
+
+  @media (max-width: 767px)
+    padding 15px
 </style>
