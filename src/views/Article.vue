@@ -1,6 +1,7 @@
 <template>
   <div class="my-article-containter">
     <my-error-handler v-if='error'></my-error-handler>
+    <sharebtn :info="getShareInfo()"></sharebtn>
     <transition name="slide-fade">
       <div v-if="article">
         <div class="markdown-body">
@@ -29,6 +30,12 @@ export default {
     this.fetchData()
   },
   methods: {
+    getShareInfo () {
+      return {
+        url: `https://dingkewz.com/blog/${this.articleId}`,
+        text: `${this.article.title}`
+      }
+    },
     fetchData () {
       this.$http.get(`/api/blog/articles/${this.articleId}`).then(res => {
         if (res.status === 200) {
