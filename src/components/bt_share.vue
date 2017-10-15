@@ -1,5 +1,5 @@
 <template>
-  <div class="my-share-btn" @click="share">
+  <div :class="classObject" @click="share">
     <icon name="share-alt" scale="2"></icon>
   </div>
 </template>
@@ -7,6 +7,14 @@
 <script>
 export default {
   props: ['info'],
+  computed: {
+    classObject () {
+      return {
+        'my-share-btn': true,
+        'my-share-btn-invisible': navigator.share === undefined
+      }
+    }
+  },
   methods: {
     share () {
       console.log('invoking share functionality---with link', this.info)
@@ -33,4 +41,6 @@ export default {
   right 30px
   top 20px
   z-index 9999
+.my-share-btn-invisible
+  display none
 </style>
