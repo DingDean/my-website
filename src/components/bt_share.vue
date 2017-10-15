@@ -9,7 +9,7 @@ export default {
   props: ['link'],
   methods: {
     share () {
-      console.log('invoking share functionality---')
+      console.log('invoking share functionality---with link', this.link)
       if (navigator.share) {
         console.log('navigator has web share api---')
         navigator.share({
@@ -19,8 +19,9 @@ export default {
         })
           .then(() => console.log('Successful share'))
           .catch((error) => alert('Error sharing', error))
+      } else {
+        alert('navigator does not have web share api')
       }
-      alert('navigator does not have web share api')
     }
   }
 }

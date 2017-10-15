@@ -1,7 +1,7 @@
 <template>
   <div class="my-article-containter">
     <my-error-handler v-if='error'></my-error-handler>
-    <sharebtn :link="getShareLink">
+    <sharebtn :link="getShareLink()">
       <p> This is a share button </p>
     </sharebtn>
     <transition name="slide-fade">
