@@ -1,6 +1,9 @@
 <template>
   <div class="my-article-containter">
     <my-error-handler v-if='error'></my-error-handler>
+    <sharebtn :link="getShareLink">
+      <p> This is a share button </p>
+    </sharebtn>
     <transition name="slide-fade">
       <div v-if="article">
         <div class="markdown-body">
@@ -29,6 +32,9 @@ export default {
     this.fetchData()
   },
   methods: {
+    getShareLink () {
+      return `https://dingkewz.com/blog/${this.articleId}`
+    },
     fetchData () {
       this.$http.get(`/api/blog/articles/${this.articleId}`).then(res => {
         if (res.status === 200) {
