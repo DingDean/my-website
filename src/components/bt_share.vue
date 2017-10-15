@@ -1,21 +1,21 @@
 <template>
   <div class="my-share-btn" @click="share">
-    <slot></slot>
+    <icon name="share-alt" scale="2"></icon>
   </div>
 </template>
 
 <script>
 export default {
-  props: ['link'],
+  props: ['info'],
   methods: {
     share () {
-      console.log('invoking share functionality---with link', this.link)
+      console.log('invoking share functionality---with link', this.info)
       if (navigator.share) {
         console.log('navigator has web share api---')
         navigator.share({
           title: '二向箔',
-          text: '这是我的个人网站，都来看看吧!',
-          url: `${this.link}`
+          text: this.info.text,
+          url: this.info.url
         })
           .then(() => console.log('Successful share'))
           .catch((error) => alert('Error sharing', error))
@@ -28,4 +28,9 @@ export default {
 </script>
 
 <style lang="stylus">
+.my-share-btn
+  position fixed
+  right 30px
+  top 20px
+  z-index 9999
 </style>
