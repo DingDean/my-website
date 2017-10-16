@@ -1,9 +1,9 @@
 <template>
   <div class="my-article-containter">
     <my-error-handler v-if='error'></my-error-handler>
-    <sharebtn :info="getShareInfo()"></sharebtn>
     <transition name="slide-fade">
       <div v-if="article">
+        <sharebtn :info="getShareInfo()"></sharebtn>
         <div class="markdown-body">
           <h1> {{article.title}} </h1>
           <div v-html="mdHtml"></div>
