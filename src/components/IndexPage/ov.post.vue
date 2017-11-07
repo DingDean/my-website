@@ -9,7 +9,7 @@
         <span class="ov-post-time">{{stamp}}</span>
         <span class="ov-post-summary">{{overview.summary}}</span>
         <el-button type="text" size="large"> <router-link :to="overview.link">阅读文章</router-link> </el-button>
-        <el-button type="text" size="large"> <a href="https://dingdean.github.io/my-blog/" rel="noopener" target= "_blank">更多文章</a> </el-button>
+        <el-button type="text" size="large"> <a href="https://blog.dingkewz.com" rel="noopener" target= "_blank">更多文章</a> </el-button>
       </div>
   </ovtemplate>
 </template>
