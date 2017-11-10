@@ -1,36 +1,54 @@
 <template>
   <div id="app">
-    <nav-burger></nav-burger>
-    <navigator>
-    </navigator>
-    <main id="my-main">
-      <router-view>
-        This is the first level router view
-      </router-view>
-    </main>
+    <div class="grid-wrapper">
+      <div class="upper-box">
+      </div>
+      <div class="center-box">
+        <p>丁科 / 后端</p>
+        <p>用技术连接世界</p>
+        <ul>
+          <li>
+            <a href="https://blog.dingkewz.com" _rel="noopener" target="_blank">Blog</a>
+          </li>
+          <li>
+            <a href="https://github.com/DingDean" _rel="noopener" target="_blank">GitHub</a>
+          </li>
+          <li>
+            <a href="https://www.douban.com/people/deanacroic/" _rel="noopener" target="_blank">豆瓣</a>
+          </li>
+          <li>
+            <a href="https://blog.dingkewz.com/about" _rel="noopener" target="_blank">关于我</a>
+          </li>
+        </ul>
+      </div>
+      <div class="bot-box">
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-import Navigator from './components/sideNavigator/main'
-import NavBurger from './components/burger'
 export default {
-  components: {
-    Navigator,
-    NavBurger
-  }
 }
 </script>
 
 <style lang="stylus">
 #app
+  background #EEEEEE
   font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
   -webkit-font-smoothing antialiased
   -moz-osx-font-smoothing grayscale
-#my-main
-  transition margin-left .3s ease
-  margin-left side-menu-width
-  @media (max-width: 1024px)
-    margin-left 0
-
+  text-align center
+  color #34495e
+  .grid-wrapper
+    max-width 800px
+    margin 0 auto
+    height 100vh
+    display grid
+    li, p
+      line-height 32px
+    p
+      letter-spacing 2px
+    a:hover
+      color #c05b4d
 </style>
