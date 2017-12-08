@@ -11,6 +11,9 @@
             <a href="https://blog.dingkewz.com" _rel="noopener" target="_blank">Blog</a>
           </li>
           <li>
+            <a href="https://github.com/DingDean/tmux_pm25" _rel="noopener" target="_blank">tmux_pm25</a>
+          </li>
+          <li>
             <a href="https://github.com/DingDean" _rel="noopener" target="_blank">GitHub</a>
           </li>
           <li>
