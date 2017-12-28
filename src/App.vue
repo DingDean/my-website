@@ -5,7 +5,7 @@
       </div>
       <div class="center-box">
         <p>丁科 / 后端</p>
-        <p>用技术连接世界</p>
+        <p>观察 思考 创造</p>
         <ul>
           <li>
             <a href="https://blog.dingkewz.com" _rel="noopener" target="_blank">Blog</a>
