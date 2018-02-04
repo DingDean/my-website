@@ -92,11 +92,13 @@ export default {
     #info-a
       position absolute
       left 10px
+      bottom 0
     #info-b
       display inline-block
     #info-c
       position absolute
       right 10px
+      bottom 0
 
 @media (max-width: 600px)
   #tmux-container
