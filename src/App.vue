@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <div id="tmux-container">
+
       <div id="tmux-main">
         <div class="tmux-pane" id="pane-left">
           <p class="prompt">/Users/丁科/ >> <span>whoami | cat</span> </p>
@@ -25,14 +26,15 @@
           </div>
         </div>
       </div>
+
       <div id="tmux-info">
         <span id="info-a">[1-二向箔]</span>
         <span id="info-b">观察 思考 创造</span>
         <span id="info-c">18/02/04 日 12:22</span>
       </div>
+
     </div>
-    <div id="legal-info">
-    </div>
+
   </div>
 </template>
 
@@ -43,12 +45,14 @@ export default {
 
 <style lang="stylus">
 @import url("https://fonts.googleapis.com/css?family=Space+Mono")
+body, html
+  background-color dark-primary-c
 #app
   font-family 'Space Mono', serif
   -webkit-font-smoothing antialiased
   -moz-osx-font-smoothing grayscale
-  background-color dark-primary-c
   height 100%
+
   #tmux-container
     position absolute
     top 10%
