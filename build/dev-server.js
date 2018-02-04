@@ -15,8 +15,6 @@ var webpackConfig = process.env.NODE_ENV === 'testing'
   : require('./webpack.dev.conf')
 var fs = require('fs')
 require('dotenv').config()
-var mongoose = require('mongoose')
-mongoose.connect(process.env.DB_LOC, {userMongoClient: true})
 // default port where dev server listens for incoming traffic
 var port = process.env.PORT || config.dev.port
 // automatically open browser, if not set will be false
