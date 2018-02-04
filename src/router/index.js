@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-// import MyIndex from '@/views/Index'
+import MyIndex from '@/views/Index'
 
 // const MyIndex = () => import('@/views/Index')
 // const MyArticles = () => import('@/views/Articles')
@@ -13,8 +13,6 @@ export default new Router({
   mode: 'history',
   routes: [
     {path: '/', component: MyIndex},
-    {path: '/blog', component: MyArticles},
-    {path: '/blog/:articleId', component: MyArticle, props: true},
-    {path: '/about', component: MyAbout}
+    {path: '*', component: MyIndex}
   ]
 })
