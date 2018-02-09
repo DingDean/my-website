@@ -65,8 +65,8 @@ app.use(hotMiddleware)
 var staticPath = path.posix.join(config.dev.assetsPublicPath, config.dev.assetsSubDirectory)
 app.use(staticPath, express.static('./static'))
 
-const routes = require('../server/routes/routes.config.js');
-routes.forEach(route => app.use(route.path, require(route.module)))
+//const routes = require('../server/routes/routes.config.js');
+//routes.forEach(route => app.use(route.path, require(route.module)))
 
 var uri = 'http://localhost:' + port
 
