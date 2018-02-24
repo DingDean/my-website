@@ -37,6 +37,13 @@
 
 <script>
 export default {
+  mounted () {
+    window.addEventListener('keydown', function (event) {
+      if (event.ctrlKey && event.key === 'b') {
+        alert('哟，ctrl+B+S在这里是没有用的哦~\n这是一个非常简单的隐藏界面，让我请你喝杯咖啡吧！\n我基本上每个周末的早晨都会在下列的星巴克喝咖啡，写代码:\n>杭州市滨江区江汉路1785号 背对收银台，您右手边的长桌，应该会有一个人对着Macbook Pro苦思，那就是我啦！\n如果您也在附近，我很愿意用一杯咖啡和您聊聊天，无论聊什么～\n期待遇见您！')
+      }
+    })
+  },
   computed: {
     localDate () {
       let now = new Date()
