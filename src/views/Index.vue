@@ -9,7 +9,10 @@
           <p>我叫丁科，现居杭州，是一名后端(NodeJS)工程师。</p>
           <p>我惯用JavaScript, Python以及Go。</p>
           <p>在这里，你可以找到我的书评，技术文章以及一些私人絮语。</p>
-          <p>同时也可以给我发邮件: dingkework@hotmail.com </p>
+          <p>同时也可以给我发邮件:</p>
+          <p>console.log("me"):</p>
+          <p>console.log("@")</p>
+          <p>console.log("dingkewz.com")</p>
           <p>祝你一天愉快！ </p>
         </div>
       </div>
