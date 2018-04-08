@@ -3,7 +3,7 @@
 
     <div id="tmux-main">
       <div class="tmux-pane" id="pane-left">
-        <p class="prompt">/Users/丁科/ >> <span>whoami | cat</span> </p>
+        <p class="prompt">/Users/丁科/ >> <span>whoami</span> </p>
         <div class="stdout">
           <p>嘿，你好，欢迎来到我的二向箔！</p>
           <p>我叫丁科，现居杭州，是一名后端(NodeJS)工程师。</p>
