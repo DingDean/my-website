@@ -19,6 +19,7 @@
         <div class="stdout">
           <ul>
             <li> > <a _rel="noopener" target="_blank" href="https://blog.dingkewz.com"> Blog </a> </li>
+            <li> > <a _rel="noopener" target="_blank" href="https://digitalme.dingkewz.com"> DigitalMe </a> </li>
             <li> > <a _rel="noopener" target="_blank" href="https://github.com/DingDean/tmux_pm25"> tmux_pm25 </a> </li>
             <li> > <a _rel="noopener" target="_blank" href="https://github.com/DingDean/"> GitHub </a> </li>
             <li> > <a _rel="noopener" target="_blank" href="https://www.douban.com/people/deanacroic/"> 豆瓣 </a> </li>
