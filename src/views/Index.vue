@@ -11,6 +11,11 @@
           <p>在这里，你可以找到我的书评，技术文章以及一些私人絮语。</p>
           <p>你可以通过邮件联系到我:
           <p>"me" + "@" + "dingkewz.com";
+          <p>或者，让我请你喝杯咖啡吧！</p>
+          <p>我基本上每个周末的早晨都会在下列的星巴克喝咖啡，写代码</p>
+          <p>杭州市滨江区江汉路1785号 背对收银台，您右手边的长桌，应该会有一个人对着Macbook Pro苦思，那就是我啦！</p>
+          <p>如果您也在附近，我很愿意用一杯咖啡和您聊聊天，无论聊什么~</p>
+          <p>期待遇见您！</p>
           <p>祝你一天愉快！ </p>
         </div>
       </div>
@@ -82,7 +87,7 @@ export default {
     border-right dashed divider-c 2px
   .tmux-pane
     padding 5px
-    font-size 1.5em
+    font-size 1em
     .prompt
       margin-left 10px
       span
@@ -136,7 +141,7 @@ export default {
       color accent-c
   .stdout
     margin 10px
-    line-height 3em
+    line-height 1.4em
 
   #tmux-info
     width 100%
