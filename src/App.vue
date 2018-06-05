@@ -49,7 +49,7 @@
         <div class='grid-center' id='contact-info'>
           <p>请让我<span class="togglebtn" @click="toggle('info')">介绍下自己</span>吧。</p>
           <p>或者，你也可以直接给我发邮件: me@dingkewz.com</p>
-          <p>再或者，请让我请你喝杯咖啡吧！</p>
+          <p>再或者，让我请你喝杯咖啡吧！</p>
           <p>不出意外，我周末的早晨(9点到11点半)会在
             <a
               _ref='noopener'
@@ -59,7 +59,7 @@
             </a>
             喝咖啡，写代码。
           </p>
-          <p>如果你正好也在附近，我很乐意与你聊聊，无论聊什么！</p>
+          <p>如果你正好也在附近，我很乐意用一杯咖啡与你聊聊，无论聊什么！</p>
           <p>期待遇见你！</p>
         </div>
       </transition>
@@ -87,7 +87,8 @@
       <transition name='slide-fade' appear>
         <div v-if='isShown.info' class='grid-center' id='athlete'>
           <p>在编程和写作之余，我喜欢运动。
-            我擅长<span class='togglebtn'>长跑</span>，也擅长<span class='togglebtn'>网球</span>。
+            <!-- 我擅长<span class='togglebtn'>长跑</span>，也擅长<span class='togglebtn'>网球</span>。 -->
+            我擅长<span class=''>长跑</span>，也擅长<span class=''>网球</span>。
             最近正在尝试去健身房练器械。
           </p>
         </div>
@@ -95,7 +96,8 @@
 
       <transition name='slide-fade' appear>
         <div v-if='isShown.info'class='grid-center' id='musicoholic'>
-          <p>我呢，如果不戴耳机的话，是出不了门的。大概是一个人久了，真的非常喜欢<span class='togglebtn' @click="toggle('music')">听音乐</span>。</p>
+          <!-- <p>我呢，如果不戴耳机的话，是出不了门的。大概是一个人久了，真的非常喜欢<span class='togglebtn' @click="toggle('music')">听音乐</span>。</p> -->
+          <p> 我非常喜欢听音乐，以至于耳机不离身，大概是一个人太久了吧，哈哈哈。我欧美的歌曲听得比较多，最近迷上了在油管上听各种电子remix，有毒。 </p>
         </div>
       </transition>
       <transition name='slide-fade' appear>
@@ -112,13 +114,14 @@
 
       <transition name='slide-fade' appear>
         <div v-if='isShown.info'class='grid-center' id='bookworm'>
-          <p>买书和看书也是我的一大爱好，除了专业书籍，我喜欢买科幻小说。你大概也发现了，我非常喜欢《三体》，它是我的最爱。除此之外，《沙丘》是我最喜欢的外国科幻小说。这是我的豆瓣，欢迎随时向我推荐好看的书籍。</p>
+          <p>买书和看书也是我的一大爱好，除了专业书籍，我喜欢买科幻小说。你大概也发现了，我非常喜欢《三体》，它是我的最爱。除此之外，《沙丘》是我最喜欢的外国科幻小说。这是我的<a _ref='noopener' href='https://www.douban.com/people/deanacroic/' target='_blank'>豆瓣</a>，欢迎随时向我推荐好看的书籍。</p>
         </div>
       </transition>
 
       <transition name='slide-fade' appear>
         <div v-if='isShown.info'class='grid-center' id='thankyou'>
-          <p><span class='togglebtn'>谢谢</span>你能看到这里。</p>
+          <!-- <p><span class='togglebtn'>谢谢</span>你能看到这里。</p> -->
+          <p><span class=''>谢谢</span>你能看到这里。</p>
           <p>如果你喜欢的话，你可以将这个网页<span class='togglebtn'>安装</span>到你的桌面。</p>
         </div>
       </transition>
