@@ -39,16 +39,6 @@
       s.parentNode.insertBefore(hm, s);
     })();
     </script>
-    <!-- Global Site Tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-111041957-1"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'UA-111041957-1');
-    </script>
-
 <style>
 body, html {
   margin: 0;
@@ -97,6 +87,7 @@ function toggleRefresh () {
   }
 }
 
+let pwaPrompt = null
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', function () {
     navigator.serviceWorker.register('/service_worker.js').then(function (reg) {
@@ -121,6 +112,12 @@ if ('serviceWorker' in navigator) {
     }).catch(function (e) {
       console.error('Error during service worker registrition', e);
     })
+  })
+
+  window.addEventListener('beforeinstallprompt', e => {
+    e.preventDefault()
+    document.__pwaPrompt = e
+    console.log('beforeinstall')
   })
 }
   </script>

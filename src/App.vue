@@ -122,9 +122,15 @@
         <div v-if='isShown.info'class='grid-center' id='thankyou'>
           <!-- <p><span class='togglebtn'>谢谢</span>你能看到这里。</p> -->
           <p><span class=''>谢谢</span>你能看到这里。</p>
-          <p>如果你喜欢的话，你可以将这个网页<span class='togglebtn'>安装</span>到你的桌面。</p>
         </div>
       </transition>
+      <transition name='slide-fade' appear>
+        <div v-if='isShown.install' class='grid-center'>
+          <p>如果你喜欢的话，你可以将这个网页<span class='togglebtn' @click='install'>安装</span>到你的桌面。</p>
+        </div>
+      </transition>
+      <div style='margin-bottom: 64px' class='grid-center'>
+      </div>
     </main>
   </div>
 </template>
@@ -137,7 +143,8 @@ export default {
         mainHeader: true,
         info: false,
         projects: false,
-        music: false
+        music: false,
+        install: false
       }
     }
   },
@@ -150,6 +157,23 @@ export default {
         return
       }
       this.isShown[target] = !this.isShown[target]
+      if (target === 'info') {
+        this.isShown.install = this.isShown.info && document.__pwaPrompt
+      }
+    },
+    install () {
+      // Show the prompt
+      document.__pwaPrompt.prompt()
+      // Wait for the user to respond to the prompt
+      document.__pwaPrompt.userChoice
+        .then((choiceResult) => {
+          if (choiceResult.outcome === 'accepted') {
+            console.log('User accepted the A2HS prompt')
+          } else {
+            console.log('User dismissed the A2HS prompt')
+          }
+          document.__pwaPrompt = null
+        })
     }
   }
 }
