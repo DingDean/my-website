@@ -3,12 +3,12 @@
     <nav>
       <ul id='bottom-nav'>
         <li>
-          <a _rel='noopener' href='https://github.com/DingDean' target='_blank'>
+          <a rel='noopener' href='https://github.com/DingDean' target='_blank'>
             <img src="./assets/GitHub-Mark-32px.png" alt="github"/>
           </a>
         </li>
         <li>
-          <a _rel='noopener' href='https://www.douban.com/people/deanacroic/' target='_blank'>
+          <a rel='noopener' href='https://www.douban.com/people/deanacroic/' target='_blank'>
             <img src="./assets/douban_32x32.png" alt="douban"/>
           </a>
         </li>
@@ -52,7 +52,7 @@
           <p>再或者，让我请你喝杯咖啡吧！</p>
           <p>不出意外，我周末的早晨(9点到11点半)会在
             <a
-              _ref='noopener'
+              rel='noopener'
               target='_blank'
               href='http://map.baidu.com/?newmap=1&s=inf%26uid%3Db343657433ec89504354d775%26wd%3D%E5%8F%8C%E5%9F%8E%E5%9B%BD%E9%99%85+%E6%98%9F%E5%B7%B4%E5%85%8B%26all%3D1%26c%3D179&from=alamap&tpl=mapdots'>
               这个星巴克
@@ -78,7 +78,7 @@
       <transition name='slide-fade' appear>
         <div v-if='isShown.info'class='grid-center' id='writter'>
           <p>我平时也会写一些文章，它们大部分都被收录于我的
-            <a _ref='noopener' target='_blank' href='https://blog.dingkewz.com'>静态博客</a>
+            <a rel='noopener' target='_blank' href='https://blog.dingkewz.com'>静态博客</a>
             之中。
           </p>
         </div>
@@ -114,7 +114,7 @@
 
       <transition name='slide-fade' appear>
         <div v-if='isShown.info'class='grid-center' id='bookworm'>
-          <p>买书和看书也是我的一大爱好，除了专业书籍，我喜欢买科幻小说。你大概也发现了，我非常喜欢《三体》，它是我的最爱。除此之外，《沙丘》是我最喜欢的外国科幻小说。这是我的<a _ref='noopener' href='https://www.douban.com/people/deanacroic/' target='_blank'>豆瓣</a>，欢迎随时向我推荐好看的书籍。</p>
+          <p>买书和看书也是我的一大爱好，除了专业书籍，我喜欢买科幻小说。你大概也发现了，我非常喜欢《三体》，它是我的最爱。除此之外，《沙丘》是我最喜欢的外国科幻小说。这是我的<a rel='noopener' href='https://www.douban.com/people/deanacroic/' target='_blank'>豆瓣</a>，欢迎随时向我推荐好看的书籍。</p>
         </div>
       </transition>
 

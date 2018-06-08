@@ -11,7 +11,7 @@
       <h4>{{ this.current.sub }}</h4>
       <br>
       <div v-html='this.current.content'> </div>
-      <a class='shell-link' _ref='noopener' :href='this.current.link' target='_blank'>
+      <a class='shell-link' rel='noopener' :href='this.current.link' target='_blank'>
         GitHub
       </a>
     </div>
