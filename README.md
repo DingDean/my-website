@@ -9,3 +9,5 @@
 ## TODO
 
 - [ ] 分享自己喜欢的音乐
+- [ ] 集成Web Share Api
+- [ ] 集成Server Push Api
