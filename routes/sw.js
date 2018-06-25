@@ -5,6 +5,7 @@ const Musics = require('../modules/database/musics.js')
 const Subscriptions = require('../modules/database/subscriptions.js')
 const helper = require('./sw.helper.js')
 const bounce = require('bounce')
+const uuid = require('uuid/v4')
 
 if (!process.env.VAPID_PUBLIC_KEY || !process.env.VAPID_PRIVATE_KEY) {
   console.log('Environment varibles VAPID_PUBLIC_KEY || VAPID_PRIVATE_KEY not found');
@@ -16,6 +17,16 @@ if (!process.env.VAPID_PUBLIC_KEY || !process.env.VAPID_PRIVATE_KEY) {
   console.log("The following keys are generated for you, it's advised to save them properly")
   console.log(`VAPID_PUBLIC_KEY: ${publicKey}`)
   console.log(`VAPID_PRIVATE_KEY: ${privateKey}`)
+}
+
+if (!process.env.PASSWORD) {
+  console.log('Environment variables PASSWORD not found')
+  let pwd = uuid()
+  console.log("The following password is generated for you, it's advised to save it properly")
+  process.env.PASSWORD = pwd
+  console.log(`PASSWORD: ${pwd}`)
+} else {
+  console.log(process.env.PASSWORD)
 }
 
 webPush.setVapidDetails(
@@ -53,8 +64,9 @@ router.post('/register', async function (req, res) {
 //   res.sendStatus(201)
 // })
 router.post('/musicShare', async function (req, res) {
-  let {url, thought} = req.body
-  console.log(url)
+  let {url, thought, pwd} = req.body
+  if (pwd != process.env.PWD)
+    return res.sendStatus(400);
   let {musicId} = helper.parseNeteaseMusic(url)
 
   try {
