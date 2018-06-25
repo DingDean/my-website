@@ -1,8 +1,10 @@
 const express = require('express')
 const router = express.Router()
 const webPush = require('web-push');
-const Musics = require('../modules/database/models/musics.js')
+const Musics = require('../modules/database/musics.js')
+const Subscriptions = require('../modules/database/subscriptions.js')
 const helper = require('./sw.helper.js')
+const bounce = require('bounce')
 
 if (!process.env.VAPID_PUBLIC_KEY || !process.env.VAPID_PRIVATE_KEY) {
   console.log('Environment varibles VAPID_PUBLIC_KEY || VAPID_PRIVATE_KEY not found');
@@ -26,67 +28,52 @@ router.get('/vapidPublicKey', function (req, res) {
   res.send(process.env.VAPID_PUBLIC_KEY)
 })
 
-let users = []
-router.post('/register', function (req, res) {
-  let {subscription} = req.body
-  if (!subscription)
-    return res.sendStatus(400)
-  let {endpoint} = subscription
-  if (!users[endpoint])
-    users[endpoint] = subscription
-  res.sendStatus(201)
-})
-
-router.post('/unregister', function (req, res) {
+router.post('/register', async function (req, res) {
   let {subscription} = req.body
   if (!subscription)
     return res.sendStatus(400)
 
-  let {endpoint} = subscription
-  if (users[endpoint])
-    delete users[endpoint]
-  res.sendStatus(201)
-})
-
-let musicCache
-async function getMusicCache (Musics) {
   try {
-    musicCache = await helper.makeMusicList(Musics)
+    await Subscriptions.save(subscription)
+    res.sendStatus(201)
   } catch (e) {
-    console.log('Failed to get music cache: ' + e)
-    musicCache = []
+    bounce.rethrow(e, 'system')
+    res.sendStatus(500)
   }
-}
-getMusicCache(Musics)
+})
+
+// router.post('/unregister', function (req, res) {
+//   let {subscription} = req.body
+//   if (!subscription)
+//     return res.sendStatus(400)
+
+//   let {endpoint} = subscription
+//   if (users[endpoint])
+//     delete users[endpoint]
+//   res.sendStatus(201)
+// })
 router.post('/musicShare', async function (req, res) {
   let {url, thought} = req.body
   console.log(url)
   let {musicId} = helper.parseNeteaseMusic(url)
 
-  let doc = new Musics({musicId, thought, date: new Date()})
   try {
-    let result = await doc.save()
-    let tweet = helper.fromDbtoMusic(result)
-    if (musicCache[0].length < 5)
-      musicCache[0].push(tweet)
-    else
-      musicCache.push([tweet])
+    let result = await Musics.save(musicId, thought)
 
     let pushOptions = helper.makeRichMsg(thought)
+    let users = await Subscriptions.get()
     for (let endpoint in users) {
       let subscription = users[endpoint]
       webPush.sendNotification(subscription, pushOptions)
-      .then(function () {
-      }).catch(function (e) {
+      .catch(function (e) {
         console.error('push music error: ' + e)
-        delete users[endpoint]
       })
     }
 
     res.sendStatus(201)
   } catch (err) {
-    console.error(err)
     res.sendStatus(500)
+    bounce.rethrow(err, 'system')
   }
 })
 
@@ -94,11 +81,9 @@ router.get('/musicList/:page', async function (req, res) {
   let page = Number(req.params.page)
   if (isNaN(page))
     return res.sendStatus(400)
-  if (!musicCache) {
-    musicCache = await helper.makeMusicList(Musics)
-  }
-  let list = musicCache[page] || []
-  let isMore = musicCache[page+1] !== undefined
+  let cache = await Musics.getTweets()
+  let list = cache[page] || []
+  let isMore = cache[page+1] !== undefined
   res.send({list, isMore})
 })
 
