@@ -5,7 +5,8 @@
   "author": "DingDean <me@dingkewz.com>",
   "private": true,
   "scripts": {
-    "serve": "DEBUG=express:* node index.js",
+    "dev": "DEBUG=express:* node index.js",
+    "serve": "NODE_ENV=production node index.js",
     "test": "mocha -cw --check-leaks --recursive ./test"
   },
   "dependencies": {
@@ -17,7 +18,8 @@
     "express": "^4.16.3",
     "mongoose": "^4.9.3",
     "uuid": "^3.2.1",
-    "web-push": "^3.3.2"
+    "web-push": "^3.3.2",
+    "winston": "^3.0.0"
   },
   "engines": {
     "node": ">= 4.0.0",

@@ -6,31 +6,38 @@ const Subscriptions = require('../modules/database/subscriptions.js')
 const helper = require('./sw.helper.js')
 const bounce = require('bounce')
 const uuid = require('uuid/v4')
+const logger = require('../modules/Logger.js')
+const path = require('path')
+const fs = require('fs')
 
 if (!process.env.VAPID_PUBLIC_KEY || !process.env.VAPID_PRIVATE_KEY) {
-  console.log('Environment varibles VAPID_PUBLIC_KEY || VAPID_PRIVATE_KEY not found');
+  logger.warn('Environment varibles VAPID_PUBLIC_KEY || VAPID_PRIVATE_KEY not found');
   let {publicKey, privateKey} = webPush.generateVAPIDKeys()
   if (!publicKey || !privateKey)
     throw new Error('Failed to auto generate VAPID_PUBLIC_KEY and VAPID_PRIVATE_KEY')
   process.env.VAPID_PUBLIC_KEY = publicKey
   process.env.VAPID_PRIVATE_KEY = privateKey
-  console.log("The following keys are generated for you, it's advised to save them properly")
-  console.log(`VAPID_PUBLIC_KEY: ${publicKey}`)
-  console.log(`VAPID_PRIVATE_KEY: ${privateKey}`)
+
+  try {
+    fs.writeFileSync(
+      path.resolve(__dirname, '../.temp_keys'),
+      {
+        VAPID_PUBLIC_KEY: publicKey,
+        VAPID_PRIVATE_KEY: privateKey
+      },
+    )
+    logger.warn("New keys are generated for you and stored in .temp_keys file")
+  } catch (e) {
+    throw new Error("Failed to setup keys needed for push api: " + e)
+  }
 }
 
 if (!process.env.PASSWORD) {
-  console.log('Environment variables PASSWORD not found')
-  let pwd = uuid()
-  console.log("The following password is generated for you, it's advised to save it properly")
-  process.env.PASSWORD = pwd
-  console.log(`PASSWORD: ${pwd}`)
-} else {
-  console.log(process.env.PASSWORD)
+  throw new Error('Environment variables PASSWORD not found')
 }
 
 webPush.setVapidDetails(
-  'http://localhost:3000',
+  process.env.NODE_ENV === 'production' ? 'https://dingkewz.com' : 'http://localhost:3000',
   process.env.VAPID_PUBLIC_KEY,
   process.env.VAPID_PRIVATE_KEY
 )
@@ -79,7 +86,7 @@ router.post('/musicShare', async function (req, res) {
       let subscription = users[endpoint]
       webPush.sendNotification(subscription, pushOptions)
       .catch(function (e) {
-        console.error('push music error: ' + e)
+        logger.error('push music error: ' + e)
       })
     }
 
