@@ -94,10 +94,15 @@ router.get('/musicList/:page', async function (req, res) {
   let page = Number(req.params.page)
   if (isNaN(page))
     return res.sendStatus(400)
-  let cache = await Musics.getTweets()
-  let list = cache[page] || []
-  let isMore = cache[page+1] !== undefined
-  res.send({list, isMore})
+  try {
+    let cache = await Musics.getTweets()
+    let list = cache[page] || []
+    let isMore = cache[page+1] !== undefined
+    res.send({list, isMore})
+  } catch (e) {
+    res.sendStatus(500)
+    bounce.rethrow(e, 'system')
+  }
 })
 
 module.exports = router

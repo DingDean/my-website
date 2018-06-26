@@ -12,7 +12,9 @@ async function save (musicId, thought) {
     let cache = await getTweets()
     let result = await doc.save()
     let tweet = fromDbtoTweet(result)
-    if (cache[0].length < 5)
+    if (cache.length === 0)
+      cache[0] = [tweet]
+    else if (cache[0].length < 5)
       cache[0].unshift(tweet)
     else
       cache.unshift([tweet])
