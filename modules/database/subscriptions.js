@@ -27,7 +27,7 @@ let cache = null
 async function get () {
   if (cache)
     return cache
-  cache = await Subs.find().exec()
+  cache = await Subs.find({}, '-_id endpoint keys').exec()
   return cache
 }
 module.exports = {

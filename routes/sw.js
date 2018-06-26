@@ -65,8 +65,9 @@ router.post('/register', async function (req, res) {
 // })
 router.post('/musicShare', async function (req, res) {
   let {url, thought, pwd} = req.body
-  if (pwd != process.env.PASSWORD)
+  if (pwd != process.env.PASSWORD) {
     return res.sendStatus(400);
+  }
   let {musicId} = helper.parseNeteaseMusic(url)
 
   try {
