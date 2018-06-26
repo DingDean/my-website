@@ -6,6 +6,7 @@ const fs = require('fs')
 const bodyParser = require('body-parser')
 require('dotenv').config()
 const routers = require('./routes')
+const logger = require('./modules/Logger.js')
 
 /* MongoDB */
 const mongoose = require('mongoose')
@@ -14,8 +15,9 @@ mongoose.connect(process.env.DB_LOC, {
   useMongoClient: true,
   keepAlive: 120
 }).then(() => {
-  console.log('connected to database')
+  logger.info('connected to database')
 }).catch(err => {
+  logger.error(err)
   throw new Error(err)
 })
 
@@ -38,5 +40,5 @@ routers.forEach(function ({path, route}) {
 
 let port = process.env.PORT || 3000
 app.listen(port, '0.0.0.0', function () {
-  console.log('Server is listen on port ' + port)
+  logger.info('Server is listen on port ' + port)
 });
