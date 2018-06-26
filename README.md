@@ -8,6 +8,9 @@
 
 ## TODO
 
-- [ ] 分享自己喜欢的音乐
+- [x] 分享自己喜欢的音乐
 - [ ] 集成Web Share Api
-- [ ] 集成Server Push Api
+- [x] 集成Server Push Api
+- [ ] 重构所有用到async/await的代码
+- [ ] 统一服务器端的缓存层
+- [ ] 集成写入Log的能力，以及崩溃自动报警
